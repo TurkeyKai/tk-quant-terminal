@@ -43,9 +43,9 @@ LANG_DICT = {
             "sb_caption": "机构级量化与精算风控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略与因子参数",
             "sb_pool": "多资产自选监控池:",
-            "sb_pool_help": "💡 **资产代码规范**:\n- **美股**: `AAPL`, `TSLA`, `NVDA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ` 华天科技)\n- **加密资产**: 加 `-USD` (如 `BTC-USD`)",
+            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`, `NVDA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ`)\n- **加密资产**: 加 `-USD` (如 `BTC-USD`)",
             "sb_bm": "宏观基准资产 (Benchmark):",
-            "sb_bm_help": "💡 **大盘指数参考示例**:\n- **美股标普**: `SPY` 或 `^GSPC`\n- **纳斯达克**: `QQQ` 或 `^IXIC`\n- **中国A股大盘**: `000001.SS` (上证指数)\n- **香港恒生指数**: `^HSI`",
+            "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- **美股标普**: `SPY`\n- **纳斯达克**: `QQQ`\n- **上证指数**: `000001.SS`\n- **恒生指数**: `^HSI`",
             "sb_actuarial": "#### 💰 资本配置与风控管理",
             "sb_capital": "策略模拟初始本金 ($):",
             "sb_winrate": "策略历史胜率 (Win Rate):",
@@ -71,7 +71,7 @@ LANG_DICT = {
             "m_stop_loss": "动态防守止损位",
             "m_kelly_ratio": "凯利配比",
             "m_var_exp": "VaR 尾部风险敞口",
-            "m_waiting": "👈 请在左侧侧边栏配置策略参数，并点击 **执行多因子量化扫描** 以加载终端。",
+            "m_waiting": "👈 请在左侧侧边栏配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
             "a_hold": "NEUTRAL (中性观望)",
             "a_hold_r": "多空动能交织，未触及统计显著性阈值",
             "a_buy": "LONG BREAKOUT (多头突破)",
@@ -88,9 +88,9 @@ LANG_DICT = {
             "sb_caption": "专业量化策略辅助系统 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略参数配置",
             "sb_pool": "自选股票池代码:",
-            "sb_pool_help": "💡 **代码格式提示**:\n- **美股**: `AAPL`, `NVDA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技), `600519.SS`\n- **加密货币**: `BTC-USD`",
+            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`, `NVDA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技)",
             "sb_bm": "大盘对标资产 (如 SPY):",
-            "sb_bm_help": "💡 **指数示例**: 美股标普 `SPY`, 纳指 `QQQ`, 上证指数 `000001.SS`, 恒生指数 `^HSI`",
+            "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` (标普) / `000001.SS` (上证)",
             "sb_actuarial": "#### 💰 资金分配与风控",
             "sb_capital": "初始投资资金 ($):",
             "sb_winrate": "策略预期胜率:",
@@ -116,7 +116,7 @@ LANG_DICT = {
             "m_stop_loss": "建议止损位",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
-            "m_waiting": "👈 请在左侧侧边栏输入参数，点击 **运行策略分析** 开始评估。",
+            "m_waiting": "👈 请在左侧输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
             "a_hold": "观望中性",
             "a_hold_r": "当前多空信号不明，建议保持流动性。",
             "a_buy": "符合多头策略",
@@ -135,9 +135,9 @@ LANG_DICT = {
             "sb_caption": "Institutional Quant & Actuarial Engine | **By Kai Teng**",
             "sb_settings": "⚙️ Strategy & Factor Settings",
             "sb_pool": "Global Asset Watchlist:",
-            "sb_pool_help": "💡 **Ticker Guide**: US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`), Crypto (`BTC-USD`)",
+            "sb_pool_help": "💡 **Tip**: Press **Enter** after typing!\n- US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`)",
             "sb_bm": "Macro Benchmark:",
-            "sb_bm_help": "💡 **Index Examples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE Composite (`000001.SS`), Hang Seng (`^HSI`)",
+            "sb_bm_help": "💡 **Tip**: Press **Enter** after typing! (e.g. `SPY`, `QQQ`)",
             "sb_actuarial": "#### 💰 Capital & Risk Management",
             "sb_capital": "Simulated Capital ($):",
             "sb_winrate": "Strategy Win Rate:",
@@ -163,7 +163,7 @@ LANG_DICT = {
             "m_stop_loss": "Dynamic Stop Loss",
             "m_kelly_ratio": "Kelly Ratio",
             "m_var_exp": "VaR Tail Exposure",
-            "m_waiting": "👈 Configure parameters in the sidebar and click **Execute Multi-Factor Scan**.",
+            "m_waiting": "👈 Configure parameters and tickers (press **Enter**), then click **Execute**.",
             "a_hold": "NEUTRAL",
             "a_hold_r": "Mixed momentum, statistical threshold not met",
             "a_buy": "LONG BREAKOUT",
@@ -180,9 +180,9 @@ LANG_DICT = {
             "sb_caption": "Quantitative Strategy Terminal | **By Kai Teng**",
             "sb_settings": "⚙️ Strategy Settings",
             "sb_pool": "Asset Watchlist:",
-            "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`), Crypto (`BTC-USD`)",
-            "sb_bm": "Market Reference (e.g. SPY):",
-            "sb_bm_help": "💡 **Examples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
+            "sb_pool_help": "💡 **Tip**: Press **Enter** to save!",
+            "sb_bm": "Market Reference:",
+            "sb_bm_help": "💡 **Tip**: Press **Enter** to save!",
             "sb_actuarial": "#### 💰 Capital & Safety",
             "sb_capital": "Total Investment Capital ($):",
             "sb_winrate": "Target Win Rate:",
@@ -208,7 +208,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 Set your preferences on the left and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 Set your preferences, press **Enter**, and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -227,9 +227,9 @@ LANG_DICT = {
             "sb_caption": "Moteur Quant. et Actuariel | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres de Stratégie",
             "sb_pool": "Actifs surveillés:",
-            "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), Chine (`002185.SZ`), Crypto (`BTC-USD`)",
+            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
             "sb_bm": "Référence Macro:",
-            "sb_bm_help": "💡 **Exemples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
+            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
             "sb_actuarial": "#### 💰 Gestion du Capital",
             "sb_capital": "Capital Simulé ($):",
             "sb_winrate": "Taux de Victoire Attendu:",
@@ -255,7 +255,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Dynamique",
             "m_kelly_ratio": "Ratio Kelly",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Veuillez configurer les paramètres et cliquer sur **Exécuter**.",
+            "m_waiting": "👈 Configurez et appuyez sur **Entrée**, puis cliquez sur **Exécuter**.",
             "a_hold": "NEUTRE",
             "a_hold_r": "Momentum mixte, seuil statistique non atteint",
             "a_buy": "CASSURE HAUSSIÈRE",
@@ -272,9 +272,9 @@ LANG_DICT = {
             "sb_caption": "Terminal de Stratégie | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres",
             "sb_pool": "Actifs à surveiller:",
-            "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), Chine (`002185.SZ`), Crypto (`BTC-USD`)",
-            "sb_bm": "Référence (ex: SPY):",
-            "sb_bm_help": "💡 **Exemples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
+            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée** pour valider.",
+            "sb_bm": "Référence:",
+            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée** pour valider.",
             "sb_actuarial": "#### 💰 Argent & Sécurité",
             "sb_capital": "Capital Total ($):",
             "sb_winrate": "Taux de Victoire:",
@@ -300,7 +300,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Suggéré",
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Définissez vos préférences à gauche et cliquez sur **Lancer**.",
+            "m_waiting": "👈 Définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
             "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
@@ -454,7 +454,7 @@ st.markdown(unified_css, unsafe_allow_html=True)
 t = LANG_DICT[lang][mode_key]
 
 # ==========================================
-# 5. 侧边栏：交互面板
+# 5. 侧边栏：交互面板（默认清空输入框，附带回车提示）
 # ==========================================
 with st.sidebar:
     sidebar_avatar = "avatar.png"
@@ -469,15 +469,14 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     
-    # 资产池输入及全球市场提示
-    symbols_input = st.text_input(t["sb_pool"], value="AAPL, 002185.SZ, TSLA")
-    st.caption(t["sb_pool_help"]) 
+    # 默认值设为空字符串，强制用户主动输入
+    symbols_input = st.text_input(t["sb_pool"], value="")
+    st.caption(t["sb_pool_help"])  # 全球市场后缀输入指引及回车提示
     
     watchlist = [s.strip().upper() for s in symbols_input.split(",") if s.strip()]
     
-    # 大盘基准资产输入及指数参考示例提示
-    benchmark = st.text_input(t["sb_bm"], value="SPY").upper()
-    st.caption(t["sb_bm_help"])
+    benchmark = st.text_input(t["sb_bm"], value="").upper()
+    st.caption(t["sb_bm_help"])  # 大盘对标资产输入提示
     
     st.markdown(t["sb_actuarial"])
     capital = st.number_input(t["sb_capital"], min_value=10000, value=100000, step=10000)
@@ -513,122 +512,130 @@ st.markdown(t["m_subtitle"])
 st.markdown("---")
 
 if st.session_state.get('run_engine', False):
-    kelly_f = calculate_kelly(win_rate, win_loss_ratio)
-    my_bar = st.progress(0, text=t["m_fetching"])
-    
-    try:
-        bm_data = yf.Ticker(benchmark).history(period="1mo", interval="1d")
-        bm_ma20 = bm_data["Close"].rolling(20).mean().iloc[-1]
-        is_bull_market = bm_data["Close"].iloc[-1] > bm_ma20
-    except Exception:
-        is_bull_market = True 
-        
-    if is_bull_market:
-        st.success(t["m_bm_bull"].format(benchmark))
+    # 若用户未输入自选股票代码，给予友好提示
+    if not watchlist:
+        st.warning("⚠️ 请先在左侧侧边栏输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
-        st.error(t["m_bm_bear"].format(benchmark))
+        # 如果未输入宏观基准资产，默认使用 SPY
+        if not benchmark:
+            benchmark = "SPY"
 
-    for idx, sym in enumerate(watchlist):
-        my_bar.progress((idx + 1) / len(watchlist), text=t["m_calc"].format(sym))
+        kelly_f = calculate_kelly(win_rate, win_loss_ratio)
+        my_bar = st.progress(0, text=t["m_fetching"])
         
         try:
-            ticker = yf.Ticker(sym)
+            bm_data = yf.Ticker(benchmark).history(period="1mo", interval="1d")
+            bm_ma20 = bm_data["Close"].rolling(20).mean().iloc[-1]
+            is_bull_market = bm_data["Close"].iloc[-1] > bm_ma20
+        except Exception:
+            is_bull_market = True 
             
-            # 自动获取公司全称或指数名称
+        if is_bull_market:
+            st.success(t["m_bm_bull"].format(benchmark))
+        else:
+            st.error(t["m_bm_bear"].format(benchmark))
+
+        for idx, sym in enumerate(watchlist):
+            my_bar.progress((idx + 1) / len(watchlist), text=t["m_calc"].format(sym))
+            
             try:
-                comp_name = ticker.info.get("longName", sym)
-            except Exception:
-                comp_name = sym
+                ticker = yf.Ticker(sym)
+                
+                # 自动获取公司全称或指数名称
+                try:
+                    comp_name = ticker.info.get("longName", sym)
+                except Exception:
+                    comp_name = sym
 
-            df_1m = ticker.history(period="5d", interval="1m")
-            if df_1m.empty: df_1m = ticker.history(period="1mo", interval="1d") 
-            df_1d = ticker.history(period="6mo", interval="1d")
-            
-            if df_1m.empty or df_1d.empty:
-                st.warning(t["m_nodata"].format(sym))
-                continue
+                df_1m = ticker.history(period="5d", interval="1m")
+                if df_1m.empty: df_1m = ticker.history(period="1mo", interval="1d") 
+                df_1d = ticker.history(period="6mo", interval="1d")
                 
-            # 纯 Pandas 计算技术指标
-            df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
-            df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
-            df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
-            
-            high_low = df_1m["High"] - df_1m["Low"]
-            high_close = np.abs(df_1m["High"] - df_1m["Close"].shift())
-            low_close = np.abs(df_1m["Low"] - df_1m["Close"].shift())
-            true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
-            df_1m["ATR"] = true_range.rolling(14).mean()
-            
-            curr = df_1m.iloc[-1]
-            price = curr["Close"]
-            vwap = curr["VWAP"] if not pd.isna(curr["VWAP"]) else price
-            atr = curr["ATR"] if not pd.isna(curr["ATR"]) else price * 0.02
-            sma_f = curr["SMA_5"] if not pd.isna(curr["SMA_5"]) else price
-            sma_s = curr["SMA_20"] if not pd.isna(curr["SMA_20"]) else price
-            z_score = calculate_zscore(df_1m["Close"])
-            
-            act, color, reason = t["a_hold"], "normal", t["a_hold_r"]
-            
-            if sma_f > sma_s and price > vwap and z_score > 1.0:
-                if is_bull_market:
-                    act, color, reason = t["a_buy"], "inverse", t["a_buy_r"]
-                else:
-                    act, color, reason = t["a_block"], "off", t["a_block_r"]
-            elif sma_f < sma_s and price < vwap and z_score < -1.5:
-                act, color, reason = t["a_rev"], "inverse", t["a_rev_r"]
-            elif sma_f < sma_s and z_score < -2.0:
-                act, color, reason = t["a_sell"], "normal", t["a_sell_r"]
+                if df_1m.empty or df_1d.empty:
+                    st.warning(t["m_nodata"].format(sym))
+                    continue
+                    
+                # 纯 Pandas 计算技术指标
+                df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
+                df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
+                df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
                 
-            target_pos = capital * kelly_f if "BUY" in act else 0.0
-            var_95 = calculate_var(df_1d, target_pos)
+                high_low = df_1m["High"] - df_1m["Low"]
+                high_close = np.abs(df_1m["High"] - df_1m["Close"].shift())
+                low_close = np.abs(df_1m["Low"] - df_1m["Close"].shift())
+                true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+                df_1m["ATR"] = true_range.rolling(14).mean()
+                
+                curr = df_1m.iloc[-1]
+                price = curr["Close"]
+                vwap = curr["VWAP"] if not pd.isna(curr["VWAP"]) else price
+                atr = curr["ATR"] if not pd.isna(curr["ATR"]) else price * 0.02
+                sma_f = curr["SMA_5"] if not pd.isna(curr["SMA_5"]) else price
+                sma_s = curr["SMA_20"] if not pd.isna(curr["SMA_20"]) else price
+                z_score = calculate_zscore(df_1m["Close"])
+                
+                act, color, reason = t["a_hold"], "normal", t["a_hold_r"]
+                
+                if sma_f > sma_s and price > vwap and z_score > 1.0:
+                    if is_bull_market:
+                        act, color, reason = t["a_buy"], "inverse", t["a_buy_r"]
+                    else:
+                        act, color, reason = t["a_block"], "off", t["a_block_r"]
+                elif sma_f < sma_s and price < vwap and z_score < -1.5:
+                    act, color, reason = t["a_rev"], "inverse", t["a_rev_r"]
+                elif sma_f < sma_s and z_score < -2.0:
+                    act, color, reason = t["a_sell"], "normal", t["a_sell_r"]
+                    
+                target_pos = capital * kelly_f if "BUY" in act else 0.0
+                var_95 = calculate_var(df_1d, target_pos)
 
-            with st.container(border=True):
-                # 标题同时显示公司全称与代码
-                st.subheader(t["m_report"].format(comp_name, sym))
-                
-                col1, col2, col3, col4, col5 = st.columns(5)
-                col1.metric(t["m_price"], f"${price:.2f}")
-                col2.metric(t["m_vwap"], f"${vwap:.2f}", f"{(price-vwap)/vwap*100:.2f}%")
-                col3.metric(t["m_zscore"], f"{z_score:+.2f}σ" if mode_key=="PRO" else f"{z_score:+.2f}", delta_color="off")
-                col4.metric(t["m_kelly"], f"${target_pos:,.0f}")
-                col5.metric(t["m_var"], f"${var_95:,.0f}" if target_pos>0 else "-", delta_color="inverse")
-                
-                chart_col, report_col = st.columns([2, 1])
-                
-                with chart_col:
-                    plot_df = df_1m.tail(60)
-                    fig = go.Figure()
-                    fig.add_trace(go.Candlestick(
-                        x=plot_df.index, open=plot_df['Open'], high=plot_df['High'],
-                        low=plot_df['Low'], close=plot_df['Close'], name='Price'
-                    ))
-                    fig.add_trace(go.Scatter(
-                        x=plot_df.index, y=plot_df['VWAP'], 
-                        mode='lines', name='VWAP', line=dict(color='magenta', width=2, dash='dash')
-                    ))
-                    fig.update_layout(
-                        title=t["m_chart_title"].format(comp_name, sym),
-                        template=plotly_template, 
-                        margin=dict(l=0, r=0, t=40, b=0),
-                        height=350,
-                        xaxis_rangeslider_visible=False
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
-                
-                with report_col:
-                    st.markdown(t["m_ai_decision"])
-                    if "BUY" in act or "ACHAT" in act: st.success(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
-                    elif "SELL" in act or "VENTE" in act: st.error(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
-                    else: st.info(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
-                        
-                    st.markdown(t["m_risk_params"])
-                    st.write(f"- **{t['m_stop_loss']}**: `${price - 1.5 * atr:.2f}`")
-                    st.write(f"- **{t['m_kelly_ratio']}**: `{kelly_f*100:.1f}%`")
-                    st.write(f"- **{t['m_var_exp']}**: `${var_95:,.0f}`")
+                with st.container(border=True):
+                    # 标题同时显示公司全称与代码
+                    st.subheader(t["m_report"].format(comp_name, sym))
+                    
+                    col1, col2, col3, col4, col5 = st.columns(5)
+                    col1.metric(t["m_price"], f"${price:.2f}")
+                    col2.metric(t["m_vwap"], f"${vwap:.2f}", f"{(price-vwap)/vwap*100:.2f}%")
+                    col3.metric(t["m_zscore"], f"{z_score:+.2f}σ" if mode_key=="PRO" else f"{z_score:+.2f}", delta_color="off")
+                    col4.metric(t["m_kelly"], f"${target_pos:,.0f}")
+                    col5.metric(t["m_var"], f"${var_95:,.0f}" if target_pos>0 else "-", delta_color="inverse")
+                    
+                    chart_col, report_col = st.columns([2, 1])
+                    
+                    with chart_col:
+                        plot_df = df_1m.tail(60)
+                        fig = go.Figure()
+                        fig.add_trace(go.Candlestick(
+                            x=plot_df.index, open=plot_df['Open'], high=plot_df['High'],
+                            low=plot_df['Low'], close=plot_df['Close'], name='Price'
+                        ))
+                        fig.add_trace(go.Scatter(
+                            x=plot_df.index, y=plot_df['VWAP'], 
+                            mode='lines', name='VWAP', line=dict(color='magenta', width=2, dash='dash')
+                        ))
+                        fig.update_layout(
+                            title=t["m_chart_title"].format(comp_name, sym),
+                            template=plotly_template, 
+                            margin=dict(l=0, r=0, t=40, b=0),
+                            height=350,
+                            xaxis_rangeslider_visible=False
+                        )
+                        st.plotly_chart(fig, use_container_width=True)
+                    
+                    with report_col:
+                        st.markdown(t["m_ai_decision"])
+                        if "BUY" in act or "ACHAT" in act: st.success(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
+                        elif "SELL" in act or "VENTE" in act: st.error(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
+                        else: st.info(f"**[{act}]**\n\n**{t['m_logic']}**: {reason}")
+                            
+                        st.markdown(t["m_risk_params"])
+                        st.write(f"- **{t['m_stop_loss']}**: `${price - 1.5 * atr:.2f}`")
+                        st.write(f"- **{t['m_kelly_ratio']}**: `{kelly_f*100:.1f}%`")
+                        st.write(f"- **{t['m_var_exp']}**: `${var_95:,.0f}`")
 
-        except Exception as e:
-            st.error(f"Error rendering {sym}: {e}")
-            
-    my_bar.empty()
+            except Exception as e:
+                st.error(f"Error rendering {sym}: {e}")
+                
+        my_bar.empty()
 else:
     st.info(t["m_waiting"])
