@@ -34,7 +34,7 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（精简为：简体中文、英文、法语）
+# 2. 国际化与多语言词典
 # ==========================================
 LANG_DICT = {
     "CN": {
@@ -60,7 +60,7 @@ LANG_DICT = {
             "m_title": "📊 宏微观双周期量化决策矩阵",
             "m_subtitle": "Powered by **TK's Actuarial & Quantitative Architecture**",
             "m_fetching": "核心引擎正在调动全球网络节点汇聚高频行情...",
-            "m_bm_bull": "**宏观风控阀**: 🟢 基准资产 ({0}) 运行于长期均线上方，多头策略敞口正常释放。",
+            "m_bm_bull": "**宏观风控阀**: 🟢 基准资产 ({0}) 运行于長期均线上方，多头策略敞口正常释放。",
             "m_bm_bear": "**宏观风控阀**: 🔴 基准资产 ({0}) 下破 20 日生命线，全策略风控熔断启动！",
             "m_calc": "正在执行多维量价矩阵测算: {0}...",
             "m_nodata": "无法获取标的 {0} 的有效行情数据。",
@@ -76,7 +76,7 @@ LANG_DICT = {
             "m_stop_loss": "动态防守止损位",
             "m_kelly_ratio": "凯利配比",
             "m_var_exp": "VaR 尾部风险敞口",
-            "m_waiting": "👈 请点击左上角展开侧边栏，配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
+            "m_waiting": "👈 **请点击下方按钮或左上角展开配置面板**，输入资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
             "a_hold": "NEUTRAL (中性观望)",
             "a_hold_r": "多空动能交织，未触及统计显著性阈值",
             "a_buy": "LONG BREAKOUT (多头突破)",
@@ -117,10 +117,10 @@ LANG_DICT = {
             "m_ai_decision": "#### 🤖 策略信号输出",
             "m_logic": "触发原因",
             "m_risk_params": "#### 🛡️ 风险风控基准",
-            "m_stop_loss": "建议止损价",
+            "m_stop_loss": "建议止损位",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
-            "m_waiting": "👈 请点击左上角展开侧边栏输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
+            "m_waiting": "👈 **请点击下方按钮展开配置面板**输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
             "a_hold": "观望中性",
             "a_hold_r": "当前多空信号不明，建议保持流动性。",
             "a_buy": "符合多头策略",
@@ -172,7 +172,7 @@ LANG_DICT = {
             "m_stop_loss": "Dynamic Stop Loss",
             "m_kelly_ratio": "Kelly Ratio",
             "m_var_exp": "VaR Tail Exposure",
-            "m_waiting": "👈 Click the top-left menu to expand sidebar, configure tickers (press **Enter**), and click **Execute**.",
+            "m_waiting": "👈 **Please expand the configuration panel on the left**, enter tickers (press **Enter**), and click **Execute**.",
             "a_hold": "NEUTRAL",
             "a_hold_r": "Mixed momentum, statistical threshold not met",
             "a_buy": "LONG BREAKOUT",
@@ -217,7 +217,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 Click top-left to expand sidebar, set preferences, press **Enter**, and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 **Please expand the configuration panel on the left**, set preferences, press **Enter**, and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -269,7 +269,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Dynamique",
             "m_kelly_ratio": "Ratio Kelly",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Ouvrez le menu en haut à gauche, configurez (appuyez sur **Entrée**), puis cliquez sur **Exécuter**.",
+            "m_waiting": "👈 **Ouvrez le panneau de configuration à gauche**, configurez (appuyez sur **Entrée**), puis cliquez sur **Exécuter**.",
             "a_hold": "NEUTRE",
             "a_hold_r": "Momentum mixte, seuil statistique non atteint",
             "a_buy": "CASSURE HAUSSIÈRE",
@@ -314,7 +314,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Suggéré",
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Ouvrez le menu en haut à gauche, définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
+            "m_waiting": "👈 **Ouvrez le panneau de configuration à gauche**, définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
             "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
@@ -335,7 +335,6 @@ LANG_DICT = {
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
-# 先默认获取简体中文的 UI 标签防报错
 lang = "CN"
 ui_t = LANG_DICT[lang]
 
@@ -367,6 +366,14 @@ with col_logo:
         st.markdown("<div style='text-align: right; margin-top: 15px; font-weight: bold; color: #38bdf8;'>🦅 TK</div>", unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
+
+# ==========================================
+# 3.5 显式常驻展开按钮（确保用户能随时呼出侧边栏）
+# ==========================================
+col_expand_btn, _ = st.columns([2, 8])
+with col_expand_btn:
+    if st.button("📂 展开资产配置与参数面板 (Open Control Panel)", use_container_width=True):
+        st.session_state['expand_sidebar'] = True
 
 # ==========================================
 # 4. 高级舒适护眼配色引擎
@@ -536,7 +543,7 @@ st.markdown("---")
 
 if st.session_state.get('run_engine', False):
     if not watchlist:
-        st.warning("⚠️ 请先点击左上角菜单展开侧边栏，输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
+        st.warning("⚠️ 请先点击上方的 **📂 展开资产配置与参数面板** 按钮输入资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
         if not benchmark:
             benchmark = "SPY"
