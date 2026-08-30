@@ -62,7 +62,7 @@ LANG_DICT = {
             "m_stop_loss": "防守止损位",
             "m_kelly_ratio": "Kelly 比例",
             "m_var_exp": "VaR 尾部敞口",
-            "m_waiting": "👈 请在左侧侧边栏设置风控参数，并点击 **启动 TK 云端量化引擎**。",
+            "m_waiting": "👈 请 in 左侧侧边栏设置风控参数，并点击 **启动 TK 云端量化引擎**。",
             "a_hold": "HOLD (震荡观望)",
             "a_hold_r": "动能交织，方向未明",
             "a_buy": "STRONG BUY (量价突破)",
@@ -362,19 +362,28 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式（彻底隐藏右下角 Manage app 悬浮窗）
+# 统一封装并安全注入 CSS 样式（强力隐藏右下角 Manage app 悬浮窗及其底层 iframe）
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 header {{visibility: hidden;}}
 
+/* 强力隐藏右下角管理悬浮按钮及所有平台注入元素 */
 [data-testid="stToolbar"], 
 [data-testid="stDecoration"], 
 div[class*="viewerBadge"], 
-button[kind="header"] {{
+button[kind="header"],
+iframe[title="streamlit"] {{
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}}
+
+/* 隐藏所有底部固定浮动容器 */
+.element-container:has(iframe) {{
+    display: none;
 }}
 
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
