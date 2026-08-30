@@ -34,7 +34,7 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典 (机构专业版命名体系)
+# 2. 国际化与多语言词典 (支持简中、繁中、英文、法语)
 # ==========================================
 LANG_DICT = {
     "CN": {
@@ -43,9 +43,9 @@ LANG_DICT = {
             "sb_caption": "机构级量化与精算风控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略与因子参数",
             "sb_pool": "多资产自选监控池:",
-            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`, `NVDA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ`)\n- **加密资产**: 加 `-USD` (如 `BTC-USD`)",
+            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技), `600519.SS` (茅台)\n- **加密资产**: `BTC-USD`",
             "sb_bm": "宏观基准资产 (Benchmark):",
-            "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- **美股标普**: `SPY`\n- **纳斯达克**: `QQQ`\n- **上证指数**: `000001.SS`\n- **恒生指数**: `^HSI`",
+            "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- `SPY` (标普) / `000001.SS` (上证指数)",
             "sb_actuarial": "#### 💰 资本配置与风控管理",
             "sb_capital": "策略模拟初始本金 ($):",
             "sb_winrate": "策略历史胜率 (Win Rate):",
@@ -87,9 +87,9 @@ LANG_DICT = {
             "sb_caption": "专业量化策略辅助系统 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略参数配置",
             "sb_pool": "自选股票池代码:",
-            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`, `NVDA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技)",
+            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (华天科技), `600519.SS` (贵州茅台)",
             "sb_bm": "大盘对标资产 (如 SPY):",
-            "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` (标普) / `000001.SS` (上证)",
+            "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` / `000001.SS` (上证指数)",
             "sb_actuarial": "#### 💰 资金分配与风控",
             "sb_capital": "初始投资资金 ($):",
             "sb_winrate": "策略预期胜率:",
@@ -124,7 +124,97 @@ LANG_DICT = {
             "a_rev": "超跌反弹策略",
             "a_rev_r": "历史波动率偏离均值过大，存在技术性修复预期。",
             "a_sell": "触发离场信号",
-            "a_sell_r": "趋势形态破位，建议执行纪律性减仓。"
+            "a_sell_r": "趋势形态破位，建议执行纪律性减仓."
+        }
+    },
+    "ZH": {  # 繁体中文
+        "PRO": {
+            "sb_title": "### 📊 TK Quant Terminal",
+            "sb_caption": "機構級量化與精算風控引擎 | **By Kai Teng**",
+            "sb_settings": "⚙️ 策略與因子參數",
+            "sb_pool": "多資產自選監控池:",
+            "sb_pool_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ` 華天科技)\n- **加密資產**: 加 `-USD`",
+            "sb_bm": "宏觀基準資產 (Benchmark):",
+            "sb_bm_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認！\n- `SPY` / `000001.SS` (上證指數)",
+            "sb_actuarial": "#### 💰 資本配置與風控管理",
+            "sb_capital": "策略模擬初始本金 ($):",
+            "sb_winrate": "策略歷史勝率 (Win Rate):",
+            "sb_wlratio": "盈虧賠率 (W/L Ratio):",
+            "sb_btn": "🚀 執行多因子量化掃描",
+            "m_title": "📊 宏微觀雙週期量化決策矩陣",
+            "m_subtitle": "Powered by **TK's Actuarial & Quantitative Architecture**",
+            "m_fetching": "核心引擎正在調動全球網路節點彙聚高頻行情...",
+            "m_bm_bull": "**宏觀風控閥**: 🟢 基準資產 ({0}) 運行於長期均線上方，多頭策略敞口正常釋放。",
+            "m_bm_bear": "**宏觀風控閥**: 🔴 基準資產 ({0}) 下破 20 日生命線，全策略風控熔斷啟動！",
+            "m_calc": "正在執行多維量價矩陣測算: {0}...",
+            "m_nodata": "無法獲取標的 {0} 的有效行情數據。",
+            "m_price": "最新成交價",
+            "m_vwap": "機構成本基準 (VWAP)",
+            "m_zscore": "統計動量 (Z-Score)",
+            "m_kelly": "凱利最優倉位",
+            "m_var": "95% 單日 VaR 風險值",
+            "m_chart_title": "{0} ({1}) - 近 60 週期微觀結構與機構 VWAP 錨點",
+            "m_ai_decision": "#### 🤖 策略信號裁決",
+            "m_logic": "核心邏輯",
+            "m_risk_params": "#### 🛡️ 精算風控邊界",
+            "m_stop_loss": "動態防守止損位",
+            "m_kelly_ratio": "凱利配比",
+            "m_var_exp": "VaR 尾部風險敞口",
+            "m_waiting": "👈 請在左側側邊欄配置策略參數與資產代碼（**輸入後請按回車鍵確認**），並點擊 **執行多因子量化掃描** 以加載終端。",
+            "a_hold": "NEUTRAL (中性觀望)",
+            "a_hold_r": "多空動能交織，未觸及統計顯著性閾值",
+            "a_buy": "LONG BREAKOUT (多頭突破)",
+            "a_buy_r": "宏觀環境安全，價格強勢上穿機構 VWAP 成本線",
+            "a_block": "RISK BLOCKED (風控攔截)",
+            "a_block_r": "觸發系統級宏觀風控閥阻斷",
+            "a_rev": "MEAN REVERSION (均值回歸)",
+            "a_rev_r": "價格出現統計學超跌，強烈的均值回歸需求觸發",
+            "a_sell": "TECHNICAL EXIT (破位止損)",
+            "a_sell_r": "微觀結構崩塌，動態指標觸及清倉警戒線"
+        },
+        "BASIC": {
+            "sb_title": "### 📊 TK 策略觀察終端",
+            "sb_caption": "專業量化策略輔助系統 | **By Kai Teng**",
+            "sb_settings": "⚙️ 策略參數配置",
+            "sb_pool": "自選股票池代碼:",
+            "sb_pool_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (華天科技)",
+            "sb_bm": "大盤對標資產 (如 SPY):",
+            "sb_bm_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- `SPY` / `000001.SS`",
+            "sb_actuarial": "#### 💰 資金分配與風控",
+            "sb_capital": "初始投資資金 ($):",
+            "sb_winrate": "策略預期勝率:",
+            "sb_wlratio": "盈虧比 (Reward/Risk):",
+            "sb_btn": "🚀 運行策略分析",
+            "m_title": "📊 資產多維量化評估報告",
+            "m_subtitle": "基於統計學與微觀結構的多因子量化看板",
+            "m_fetching": "正在建立市場數據連接...",
+            "m_bm_bull": "**市場環境**: 🟢 對標大盤 ({0}) 趨勢向上，整體環境安全。",
+            "m_bm_bear": "**市場環境**: 🔴 對標大盤 ({0}) 出現破位下行，系統建議收縮防線！",
+            "m_calc": "正在測算標的: {0}...",
+            "m_nodata": "未能檢索到 {0} 的行情，請核對代碼或後綴。",
+            "m_price": "當前成交價",
+            "m_vwap": "機構均價 (VWAP)",
+            "m_zscore": "動量指標",
+            "m_kelly": "建議配置金額",
+            "m_var": "單日最大風險敞口 (VaR)",
+            "m_chart_title": "{0} ({1}) 近期走勢與機構成本線",
+            "m_ai_decision": "#### 🤖 策略信號輸出",
+            "m_logic": "觸發原因",
+            "m_risk_params": "#### 🛡️ 風險風控基準",
+            "m_stop_loss": "建議止損位",
+            "m_kelly_ratio": "建議倉位比例",
+            "m_var_exp": "單日 VaR 風險值",
+            "m_waiting": "👈 請在左側輸入代碼（**按回車鍵確認**），點擊 **運行策略分析** 開始評估。",
+            "a_hold": "觀望中性",
+            "a_hold_r": "當前多空信號不明，建議保持流動性。",
+            "a_buy": "符合多頭策略",
+            "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
+            "a_block": "觸發風控攔截",
+            "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
+            "a_rev": "超跌反彈策略",
+            "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
+            "a_sell": "觸發離場信號",
+            "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
         }
     },
     "EN": {
@@ -135,7 +225,7 @@ LANG_DICT = {
             "sb_pool": "Global Asset Watchlist:",
             "sb_pool_help": "💡 **Tip**: Press **Enter** after typing!\n- US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`)",
             "sb_bm": "Macro Benchmark:",
-            "sb_bm_help": "💡 **Tip**: Press **Enter** after typing! (e.g. `SPY`, `QQQ`)",
+            "sb_bm_help": "💡 **Tip**: Press **Enter** after typing! (e.g. `SPY`, `000001.SS`)",
             "sb_actuarial": "#### 💰 Capital & Risk Management",
             "sb_capital": "Simulated Capital ($):",
             "sb_winrate": "Strategy Win Rate:",
@@ -310,15 +400,23 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染（默认：中文、大众版、日间模式）
+# 3. 顶栏控制台渲染（默认：简体中文、大众版、日间模式）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
     st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language", ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
-    lang = "CN" if "CN" in lang_str else ("EN" if "EN" in lang_str else "FR")
+    # 增加繁体中文 🇭🇰 选项
+    lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
+    if "简体" in lang_str:
+        lang = "CN"
+    elif "繁體" in lang_str:
+        lang = "ZH"
+    elif "EN" in lang_str:
+        lang = "EN"
+    else:
+        lang = "FR"
 
 with col_ui2:
     st.markdown('<div class="control-label">⚙️ 请选择版本 / SELECT MODE</div>', unsafe_allow_html=True)
@@ -463,7 +561,6 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     
-    # 默认清空输入框
     symbols_input = st.text_input(t["sb_pool"], value="")
     st.caption(t["sb_pool_help"]) 
     
@@ -580,7 +677,6 @@ if st.session_state.get('run_engine', False):
                 var_95 = calculate_var(df_1d, target_pos)
 
                 with st.container(border=True):
-                    # 仅保留干净的卡片标题（公司名称与代码）
                     st.subheader(f"{comp_name} ({sym})")
                     
                     col1, col2, col3, col4, col5 = st.columns(5)
