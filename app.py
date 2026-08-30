@@ -58,7 +58,6 @@ LANG_DICT = {
             "m_bm_bear": "**宏观风控阀**: 🔴 基准资产 ({0}) 下破 20 日生命线，全策略风控熔断启动！",
             "m_calc": "正在执行多维量价矩阵测算: {0}...",
             "m_nodata": "无法获取标的 {0} 的有效行情数据。",
-            "m_report": "🏷️ 标的深度解构: {0} ({1})",
             "m_price": "最新成交价",
             "m_vwap": "机构成本基准 (VWAP)",
             "m_zscore": "统计动量 (Z-Score)",
@@ -103,7 +102,6 @@ LANG_DICT = {
             "m_bm_bear": "**市场环境**: 🔴 对标大盘 ({0}) 出现破位下行，系统建议收缩防线！",
             "m_calc": "正在测算标的: {0}...",
             "m_nodata": "未能检索到 {0} 的行情，请核对代码或后缀。",
-            "m_report": "🏷️ 资产量化报告: {0} ({1})",
             "m_price": "当前成交价",
             "m_vwap": "机构均价 (VWAP)",
             "m_zscore": "动量指标",
@@ -113,7 +111,7 @@ LANG_DICT = {
             "m_ai_decision": "#### 🤖 策略信号输出",
             "m_logic": "触发原因",
             "m_risk_params": "#### 🛡️ 风险风控基准",
-            "m_stop_loss": "建议止损位",
+            "m_stop_loss": "建议止损价",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
             "m_waiting": "👈 请在左侧输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
@@ -150,7 +148,6 @@ LANG_DICT = {
             "m_bm_bear": "**Macro Risk Valve**: 🔴 Benchmark ({0}) breached 20-MA, risk block engaged!",
             "m_calc": "Running multidimensional matrix calculations for: {0}...",
             "m_nodata": "Invalid data feed for {0}.",
-            "m_report": "🏷️ Asset Profile: {0} ({1})",
             "m_price": "Last Price",
             "m_vwap": "Institutional Cost (VWAP)",
             "m_zscore": "Stat Momentum (Z-Score)",
@@ -195,7 +192,6 @@ LANG_DICT = {
             "m_bm_bear": "**Market Environment**: 🔴 Benchmark ({0}) downtrend. Caution advised.",
             "m_calc": "Analyzing asset: {0}...",
             "m_nodata": "No data found for {0}.",
-            "m_report": "🏷️ Report: {0} ({1})",
             "m_price": "Current Price",
             "m_vwap": "Institutional Cost",
             "m_zscore": "Momentum Score",
@@ -242,7 +238,6 @@ LANG_DICT = {
             "m_bm_bear": "**Valve de Risque Macro**: 🔴 Référence ({0}) sous la MA-20, blocage actif!",
             "m_calc": "Calculs matriciels pour: {0}...",
             "m_nodata": "Données non valides pour {0}.",
-            "m_report": "🏷️ Profil d'Actif: {0} ({1})",
             "m_price": "Dernier Prix",
             "m_vwap": "Coût Institutionnel (VWAP)",
             "m_zscore": "Momentum Stat. (Z-Score)",
@@ -287,7 +282,6 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
-            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -454,7 +448,7 @@ st.markdown(unified_css, unsafe_allow_html=True)
 t = LANG_DICT[lang][mode_key]
 
 # ==========================================
-# 5. 侧边栏：交互面板（默认清空输入框，附带回车提示）
+# 5. 侧边栏：交互面板
 # ==========================================
 with st.sidebar:
     sidebar_avatar = "avatar.png"
@@ -469,14 +463,14 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     
-    # 默认值设为空字符串，强制用户主动输入
+    # 默认清空输入框
     symbols_input = st.text_input(t["sb_pool"], value="")
-    st.caption(t["sb_pool_help"])  # 全球市场后缀输入指引及回车提示
+    st.caption(t["sb_pool_help"]) 
     
     watchlist = [s.strip().upper() for s in symbols_input.split(",") if s.strip()]
     
     benchmark = st.text_input(t["sb_bm"], value="").upper()
-    st.caption(t["sb_bm_help"])  # 大盘对标资产输入提示
+    st.caption(t["sb_bm_help"]) 
     
     st.markdown(t["sb_actuarial"])
     capital = st.number_input(t["sb_capital"], min_value=10000, value=100000, step=10000)
@@ -512,11 +506,9 @@ st.markdown(t["m_subtitle"])
 st.markdown("---")
 
 if st.session_state.get('run_engine', False):
-    # 若用户未输入自选股票代码，给予友好提示
     if not watchlist:
         st.warning("⚠️ 请先在左侧侧边栏输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
-        # 如果未输入宏观基准资产，默认使用 SPY
         if not benchmark:
             benchmark = "SPY"
 
@@ -541,7 +533,6 @@ if st.session_state.get('run_engine', False):
             try:
                 ticker = yf.Ticker(sym)
                 
-                # 自动获取公司全称或指数名称
                 try:
                     comp_name = ticker.info.get("longName", sym)
                 except Exception:
@@ -555,7 +546,6 @@ if st.session_state.get('run_engine', False):
                     st.warning(t["m_nodata"].format(sym))
                     continue
                     
-                # 纯 Pandas 计算技术指标
                 df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
                 df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
                 df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
@@ -590,8 +580,8 @@ if st.session_state.get('run_engine', False):
                 var_95 = calculate_var(df_1d, target_pos)
 
                 with st.container(border=True):
-                    # 标题同时显示公司全称与代码
-                    st.subheader(t["m_report"].format(comp_name, sym))
+                    # 仅保留干净的卡片标题（公司名称与代码）
+                    st.subheader(f"{comp_name} ({sym})")
                     
                     col1, col2, col3, col4, col5 = st.columns(5)
                     col1.metric(t["m_price"], f"${price:.2f}")
