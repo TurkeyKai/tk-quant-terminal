@@ -17,13 +17,13 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置
+# 1. 页面全局配置（恢复为默认展开，且绝不遮挡原生收起按钮）
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
     page_icon="📊", 
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # ==========================================
@@ -76,7 +76,7 @@ LANG_DICT = {
             "m_stop_loss": "动态防守止损位",
             "m_kelly_ratio": "凯利配比",
             "m_var_exp": "VaR 尾部风险敞口",
-            "m_waiting": "👈 请点击左上角展开侧边栏，配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
+            "m_waiting": "👈 请在左侧侧边栏配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
             "a_hold": "NEUTRAL (中性观望)",
             "a_hold_r": "多空动能交织，未触及统计显著性阈值",
             "a_buy": "LONG BREAKOUT (多头突破)",
@@ -120,7 +120,7 @@ LANG_DICT = {
             "m_stop_loss": "建议止损价",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
-            "m_waiting": "👈 请点击左上角展开侧边栏输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
+            "m_waiting": "👈 请在左侧输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
             "a_hold": "观望中性",
             "a_hold_r": "当前多空信号不明，建议保持流动性。",
             "a_buy": "符合多头策略",
@@ -172,7 +172,7 @@ LANG_DICT = {
             "m_stop_loss": "Dynamic Stop Loss",
             "m_kelly_ratio": "Kelly Ratio",
             "m_var_exp": "VaR Tail Exposure",
-            "m_waiting": "👈 Click the top-left menu to expand sidebar, configure tickers (press **Enter**), and click **Execute**.",
+            "m_waiting": "👈 Configure parameters and tickers (press **Enter**), then click **Execute**.",
             "a_hold": "NEUTRAL",
             "a_hold_r": "Mixed momentum, statistical threshold not met",
             "a_buy": "LONG BREAKOUT",
@@ -216,7 +216,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 Click top-left to expand sidebar, set preferences, press **Enter**, and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 Set your preferences, press **Enter**, and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -268,7 +268,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Dynamique",
             "m_kelly_ratio": "Ratio Kelly",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Ouvrez le menu en haut à gauche, configurez (appuyez sur **Entrée**), puis cliquez sur **Exécuter**.",
+            "m_waiting": "👈 Configurez et appuyez sur **Entrée**, puis cliquez sur **Exécuter**.",
             "a_hold": "NEUTRE",
             "a_hold_r": "Momentum mixte, seuil statistique non atteint",
             "a_buy": "CASSURE HAUSSIÈRE",
@@ -312,7 +312,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Suggéré",
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Ouvrez le menu en haut à gauche, définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
+            "m_waiting": "👈 Définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
             "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
@@ -328,7 +328,7 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染
+# 3. 顶栏控制台渲染（单行、匀称、绝不重复）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
@@ -403,31 +403,26 @@ else:
     plotly_template = "plotly_dark"
 
 # 统一封装并安全注入 CSS 样式
-# 【修复Bug说明】：去掉了隐藏 header 和 button[kind="header"] 的代码
-# 并将顶栏背景设为透明，这样就能完美显示出左上角的原生侧边栏展开箭头！
+# 【终极修复】：去除了误杀侧边栏原生展开箭头 (collapsedControl) 的所有可能代码！
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 
-/* 确保 Streamlit 原生头部透明但不被隐藏，以保留左上角的侧边栏展开按钮 */
-header {{
-    background: transparent !important;
-}}
-
-/* 精确隐藏右上角多余工具栏、装饰线和 Manage App，而不误杀侧边栏箭头 */
-[data-testid="stToolbar"], 
-[data-testid="stDecoration"], 
-div[class*="viewerBadge"], 
-iframe[title="streamlit"] {{
+/* 仅仅精确隐藏右上角多余工具栏，绝不影响左上角的原生侧边栏开关按钮！ */
+[data-testid="stToolbar"] {{
     display: none !important;
     visibility: hidden !important;
+}}
+
+/* 仅隐藏右下角 Manage App iframe */
+iframe[title="streamlit"] {{
+    display: none !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }}
-
 .element-container:has(iframe) {{
-    display: none;
+    display: none !important;
 }}
 
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
@@ -539,7 +534,7 @@ st.markdown("---")
 
 if st.session_state.get('run_engine', False):
     if not watchlist:
-        st.warning("⚠️ 请先点击左上角的折叠箭头展开侧边栏，输入资产代码并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
+        st.warning("⚠️ 请先在左侧侧边栏输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
         if not benchmark:
             benchmark = "SPY"
@@ -612,7 +607,6 @@ if st.session_state.get('run_engine', False):
                 var_95 = calculate_var(df_1d, target_pos)
 
                 with st.container(border=True):
-                    # 仅保留干净的卡片标题（公司名称与代码）
                     st.subheader(f"{comp_name} ({sym})")
                     
                     col1, col2, col3, col4, col5 = st.columns(5)
