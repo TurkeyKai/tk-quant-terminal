@@ -17,7 +17,7 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置（默认将侧边栏折叠收起）
+# 1. 页面全局配置
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
@@ -34,13 +34,14 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（全面适配各语言组件）
+# 2. 国际化与多语言词典（完美精简统一）
 # ==========================================
 LANG_DICT = {
     "CN": {
         "ui_lang": "🌐 语言 / LANGUAGE",
         "ui_mode": "⚙️ 版本 / MODE",
         "ui_theme": "🎨 外观 / THEME",
+        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 基础策略版 (Basic)", "🔥 机构专业版 (Pro)"],
         "themes": ["☀️ 日间模式", "🌙 夜间模式", "💻 跟随系统"],
         "PRO": {
@@ -136,6 +137,7 @@ LANG_DICT = {
         "ui_lang": "🌐 語言 / LANGUAGE",
         "ui_mode": "⚙️ 版本 / MODE",
         "ui_theme": "🎨 外觀 / THEME",
+        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 基礎策略版 (Basic)", "🔥 機構專業版 (Pro)"],
         "themes": ["☀️ 日間模式", "🌙 夜間模式", "💻 跟隨系統"],
         "PRO": {
@@ -231,6 +233,7 @@ LANG_DICT = {
         "ui_lang": "🌐 LANGUAGE",
         "ui_mode": "⚙️ MODE",
         "ui_theme": "🎨 THEME",
+        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 Basic Strategy", "🔥 Institutional Pro"],
         "themes": ["☀️ Day Mode", "🌙 Night Mode", "💻 System Default"],
         "PRO": {
@@ -327,6 +330,7 @@ LANG_DICT = {
         "ui_lang": "🌐 LANGUE",
         "ui_mode": "⚙️ MODE",
         "ui_theme": "🎨 THÈME",
+        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 Version Basique", "🔥 Version Pro"],
         "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
@@ -422,12 +426,14 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染（动态联动语言字典）
+# 3. 顶栏控制台渲染（单行完美匀称三列）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
+    # 临时用默认字典获取初始标题
+    st.markdown(f'<div class="control-label">{LANG_DICT["CN"]["ui_lang"]}</div>', unsafe_allow_html=True)
     lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
     if "简体" in lang_str:
         lang = "CN"
@@ -441,16 +447,17 @@ with col_ui1:
 ui_t = LANG_DICT[lang]
 
 with col_ui1:
-    pass
+    pass # 清理多余列引用
 
 with col_ui1:
+    # 重新在第一列精准渲染正确的语言标签与选择器
     st.markdown(f'<div class="control-label">{ui_t["ui_lang"]}</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language_Select", ["🇨🇳 简中", "🇭🇰 繁中", "🇬🇧 EN", "🇫🇷 FR"], index=0 if lang=="CN" else (1 if lang=="ZH" else (2 if lang=="EN" else 3)), horizontal=True, label_visibility="collapsed")
-    if "简中" in lang_str:
+    lang_str = st.radio("Language_Select", ui_t["lang_options"], index=0 if lang=="CN" else (1 if lang=="ZH" else (2 if lang=="EN" else 3)), horizontal=True, label_visibility="collapsed")
+    if "简体" in lang_str or "简中" in lang_str:
         lang = "CN"
-    elif "繁中" in lang_str:
+    elif "繁體" in lang_str or "繁中" in lang_str:
         lang = "ZH"
-    elif "EN" in lang_str:
+    elif "English" in lang_str or "EN" in lang_str:
         lang = "EN"
     else:
         lang = "FR"
