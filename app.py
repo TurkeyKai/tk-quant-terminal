@@ -17,13 +17,13 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置（使用 "auto" 或 "collapsed"，左上角会自带原生收起/展开箭头）
+# 1. 页面全局配置
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
     page_icon="📊", 
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # ==========================================
@@ -34,24 +34,18 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典
+# 2. 国际化与多语言词典 (机构专业版命名体系)
 # ==========================================
 LANG_DICT = {
     "CN": {
-        "ui_lang": "🌐 语言 / LANGUAGE",
-        "ui_mode": "⚙️ 版本 / MODE",
-        "ui_theme": "🎨 外观 / THEME",
-        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
-        "modes": ["🟢 基础策略版 (Basic)", "🔥 机构专业版 (Pro)"],
-        "themes": ["☀️ 日间模式", "🌙 夜间模式", "💻 跟随系统"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "机构级量化与精算风控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略与因子参数",
             "sb_pool": "多资产自选监控池:",
-            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技)\n- **加密资产**: `BTC-USD`",
+            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`, `NVDA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ`)\n- **加密资产**: 加 `-USD` (如 `BTC-USD`)",
             "sb_bm": "宏观基准资产 (Benchmark):",
-            "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- `SPY` (标普) / `000001.SS` (上证指数)",
+            "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- **美股标普**: `SPY`\n- **纳斯达克**: `QQQ`\n- **上证指数**: `000001.SS`\n- **恒生指数**: `^HSI`",
             "sb_actuarial": "#### 💰 资本配置与风控管理",
             "sb_capital": "策略模拟初始本金 ($):",
             "sb_winrate": "策略历史胜率 (Win Rate):",
@@ -76,7 +70,7 @@ LANG_DICT = {
             "m_stop_loss": "动态防守止损位",
             "m_kelly_ratio": "凯利配比",
             "m_var_exp": "VaR 尾部风险敞口",
-            "m_waiting": "👈 **请点击左上角的折叠箭头展开侧边栏**，输入资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
+            "m_waiting": "👈 请在左侧侧边栏配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
             "a_hold": "NEUTRAL (中性观望)",
             "a_hold_r": "多空动能交织，未触及统计显著性阈值",
             "a_buy": "LONG BREAKOUT (多头突破)",
@@ -93,9 +87,9 @@ LANG_DICT = {
             "sb_caption": "专业量化策略辅助系统 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略参数配置",
             "sb_pool": "自选股票池代码:",
-            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (华天科技)",
+            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`, `NVDA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技)",
             "sb_bm": "大盘对标资产 (如 SPY):",
-            "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` / `000001.SS` (上证指数)",
+            "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` (标普) / `000001.SS` (上证)",
             "sb_actuarial": "#### 💰 资金分配与风控",
             "sb_capital": "初始投资资金 ($):",
             "sb_winrate": "策略预期胜率:",
@@ -120,7 +114,7 @@ LANG_DICT = {
             "m_stop_loss": "建议止损价",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
-            "m_waiting": "👈 **请点击左上角折叠箭头展开侧边栏**输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
+            "m_waiting": "👈 请在左侧输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
             "a_hold": "观望中性",
             "a_hold_r": "当前多空信号不明，建议保持流动性。",
             "a_buy": "符合多头策略",
@@ -134,12 +128,6 @@ LANG_DICT = {
         }
     },
     "EN": {
-        "ui_lang": "🌐 LANGUAGE",
-        "ui_mode": "⚙️ MODE",
-        "ui_theme": "🎨 THEME",
-        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
-        "modes": ["🟢 Basic Strategy", "🔥 Institutional Pro"],
-        "themes": ["☀️ Day Mode", "🌙 Night Mode", "💻 System Default"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Institutional Quant & Actuarial Engine | **By Kai Teng**",
@@ -147,7 +135,7 @@ LANG_DICT = {
             "sb_pool": "Global Asset Watchlist:",
             "sb_pool_help": "💡 **Tip**: Press **Enter** after typing!\n- US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`)",
             "sb_bm": "Macro Benchmark:",
-            "sb_bm_help": "💡 **Tip**: Press **Enter** after typing! (e.g. `SPY`, `000001.SS`)",
+            "sb_bm_help": "💡 **Tip**: Press **Enter** after typing! (e.g. `SPY`, `QQQ`)",
             "sb_actuarial": "#### 💰 Capital & Risk Management",
             "sb_capital": "Simulated Capital ($):",
             "sb_winrate": "Strategy Win Rate:",
@@ -172,7 +160,7 @@ LANG_DICT = {
             "m_stop_loss": "Dynamic Stop Loss",
             "m_kelly_ratio": "Kelly Ratio",
             "m_var_exp": "VaR Tail Exposure",
-            "m_waiting": "👈 **Click the top-left arrow to expand the sidebar**, configure tickers (press **Enter**), and click **Execute**.",
+            "m_waiting": "👈 Configure parameters and tickers (press **Enter**), then click **Execute**.",
             "a_hold": "NEUTRAL",
             "a_hold_r": "Mixed momentum, statistical threshold not met",
             "a_buy": "LONG BREAKOUT",
@@ -204,7 +192,6 @@ LANG_DICT = {
             "m_bm_bear": "**Market Environment**: 🔴 Benchmark ({0}) downtrend. Caution advised.",
             "m_calc": "Analyzing asset: {0}...",
             "m_nodata": "No data found for {0}.",
-            "m_report": "🏷️ Report: {0} ({1})",
             "m_price": "Current Price",
             "m_vwap": "Institutional Cost",
             "m_zscore": "Momentum Score",
@@ -217,7 +204,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 **Click the top-left arrow to expand the sidebar**, set preferences, press **Enter**, and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 Set your preferences, press **Enter**, and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -231,20 +218,14 @@ LANG_DICT = {
         }
     },
     "FR": {
-        "ui_lang": "🌐 LANGUE",
-        "ui_mode": "⚙️ MODE",
-        "ui_theme": "🎨 THÈME",
-        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
-        "modes": ["🟢 Version Basique", "🔥 Version Pro"],
-        "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Moteur Quant. et Actuariel | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres de Stratégie",
             "sb_pool": "Actifs surveillés:",
-            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !\n- US (`AAPL`), Chine (`002185.SZ`)",
+            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
             "sb_bm": "Référence Macro:",
-            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée** après la saisie !",
+            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
             "sb_actuarial": "#### 💰 Gestion du Capital",
             "sb_capital": "Capital Simulé ($):",
             "sb_winrate": "Taux de Victoire Attendu:",
@@ -269,7 +250,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Dynamique",
             "m_kelly_ratio": "Ratio Kelly",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 **Cliquez sur la flèche en haut à gauche pour ouvrir la barre latérale**, configurez (appuyez sur **Entrée**), puis cliquez sur **Exécuter**.",
+            "m_waiting": "👈 Configurez et appuyez sur **Entrée**, puis cliquez sur **Exécuter**.",
             "a_hold": "NEUTRE",
             "a_hold_r": "Momentum mixte, seuil statistique non atteint",
             "a_buy": "CASSURE HAUSSIÈRE",
@@ -301,7 +282,6 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
-            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -314,7 +294,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Suggéré",
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 **Cliquez sur la flèche en haut à gauche pour ouvrir la barre latérale**, définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
+            "m_waiting": "👈 Définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
             "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
@@ -330,33 +310,24 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染（单行、匀称、绝不重复）
+# 3. 顶栏控制台渲染（默认：中文、大众版、日间模式）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
-lang = "CN"
-ui_t = LANG_DICT[lang]
-
 with col_ui1:
-    st.markdown(f'<div class="control-label">{ui_t["ui_lang"]}</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language_Select", ui_t["lang_options"], index=0, horizontal=True, label_visibility="collapsed")
-    if "简体中文" in lang_str:
-        lang = "CN"
-    elif "English" in lang_str:
-        lang = "EN"
-    else:
-        lang = "FR"
-    ui_t = LANG_DICT[lang]
+    st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
+    lang_str = st.radio("Language", ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
+    lang = "CN" if "CN" in lang_str else ("EN" if "EN" in lang_str else "FR")
 
 with col_ui2:
-    st.markdown(f'<div class="control-label">{ui_t["ui_mode"]}</div>', unsafe_allow_html=True)
-    mode_str = st.radio("Mode", ui_t["modes"], index=0, horizontal=True, label_visibility="collapsed")
-    mode_key = "PRO" if any(x in mode_str for x in ["Pro", "专业版"]) else "BASIC"
+    st.markdown('<div class="control-label">⚙️ 请选择版本 / SELECT MODE</div>', unsafe_allow_html=True)
+    mode_str = st.radio("Mode", ["🟢 Basic (大众版)", "🔥 Pro (专业版)"], index=0, horizontal=True, label_visibility="collapsed")
+    mode_key = "PRO" if "Pro" in mode_str else "BASIC"
 
 with col_ui3:
-    st.markdown(f'<div class="control-label">{ui_t["ui_theme"]}</div>', unsafe_allow_html=True)
-    theme_str = st.radio("Theme", ui_t["themes"], index=0, horizontal=True, label_visibility="collapsed")
+    st.markdown('<div class="control-label">🎨 请选择外观 / THEME MODE</div>', unsafe_allow_html=True)
+    theme_str = st.radio("Theme", ["☀️ 日间", "🌙 夜间", "💻 跟随系统"], index=0, horizontal=True, label_visibility="collapsed")
 
 with col_logo:
     logo_path = "my_logo.png"
@@ -370,7 +341,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 # ==========================================
 # 4. 高级舒适护眼配色引擎
 # ==========================================
-if any(x in theme_str for x in ["日间", "Day", "Jour"]):
+if "日间" in theme_str:
     bg_color = "#fbfbfa"
     text_color = "#2c2c2e"
     sb_bg = "#f3f3f2"
@@ -381,7 +352,7 @@ if any(x in theme_str for x in ["日间", "Day", "Jour"]):
     lbl_color = "#0066cc"
     radio_text_color = "#1c1c1e"
     plotly_template = "plotly_white"
-elif any(x in theme_str for x in ["夜间", "Night", "Nuit"]):
+elif "夜间" in theme_str:
     bg_color = "#12141c"
     text_color = "#e1e4e8"
     sb_bg = "#181b26"
@@ -492,6 +463,7 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     
+    # 默认清空输入框
     symbols_input = st.text_input(t["sb_pool"], value="")
     st.caption(t["sb_pool_help"]) 
     
@@ -535,7 +507,7 @@ st.markdown("---")
 
 if st.session_state.get('run_engine', False):
     if not watchlist:
-        st.warning("⚠️ 请先点击左上角的折叠箭头展开侧边栏，输入资产代码并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
+        st.warning("⚠️ 请先在左侧侧边栏输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
         if not benchmark:
             benchmark = "SPY"
@@ -608,6 +580,7 @@ if st.session_state.get('run_engine', False):
                 var_95 = calculate_var(df_1d, target_pos)
 
                 with st.container(border=True):
+                    # 仅保留干净的卡片标题（公司名称与代码）
                     st.subheader(f"{comp_name} ({sym})")
                     
                     col1, col2, col3, col4, col5 = st.columns(5)
