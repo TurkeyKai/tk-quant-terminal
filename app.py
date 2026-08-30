@@ -326,7 +326,7 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼配色引擎 (强制修复单选按钮文字颜色)
+# 4. 高级舒适护眼配色引擎 (强制修复夜间单选按钮文字颜色发暗)
 # ==========================================
 if "日间" in theme_str:
     bg_color = "#fbfbfa"
@@ -337,7 +337,7 @@ if "日间" in theme_str:
     card_bg = "rgba(255, 255, 255, 0.95)"
     card_border = "#e2e2df"
     lbl_color = "#0066cc"
-    radio_text_color = "#1c1c1e" # 日间模式选项文字色
+    radio_text_color = "#1c1c1e"
     plotly_template = "plotly_white"
 elif "夜间" in theme_str:
     bg_color = "#12141c"
@@ -348,7 +348,7 @@ elif "夜间" in theme_str:
     card_bg = "rgba(27, 32, 45, 0.85)"
     card_border = "rgba(255, 255, 255, 0.08)"
     lbl_color = "#58a6ff"
-    radio_text_color = "#f0f6fc" # 夜间模式下强制选项文字为高亮柔和白
+    radio_text_color = "#ffffff"  # 强制夜间单选文字为纯白高亮
     plotly_template = "plotly_dark"
 else:
     bg_color = "#12141c"
@@ -359,10 +359,10 @@ else:
     card_bg = "rgba(27, 32, 45, 0.85)"
     card_border = "rgba(255, 255, 255, 0.08)"
     lbl_color = "#58a6ff"
-    radio_text_color = "#f0f6fc"
+    radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式
+# 统一封装并安全注入 CSS 样式（彻底修复 Radio 选项文字颜色）
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
@@ -370,8 +370,7 @@ footer {{visibility: hidden;}}
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
 div.row-widget.stRadio > div {{ flex-direction: row; gap: 8px; }}
 
-/* 强制单选按钮（Radio）内部的所有文字采用当前模式的高清字色，彻底解决夜间发暗问题 */
-div.row-widget.stRadio label p {{
+div.row-widget.stRadio label, div.row-widget.stRadio label span, div.row-widget.stRadio p {{
     color: {radio_text_color} !important;
     font-weight: 600 !important;
 }}
@@ -447,7 +446,7 @@ with st.sidebar:
         st.session_state['run_engine'] = True 
 
 # ==========================================
-# 6. 核心精算与策略函数
+# 6. 核心精算与策略函数 (纯 Pandas 实现，规避云端编译报错)
 # ==========================================
 def calculate_kelly(p, b):
     return (p * b - (1 - p)) / b
@@ -458,11 +457,10 @@ def calculate_var(df_1d, target_capital):
     var_pct = 1.645 * sigma - mu 
     return target_capital * var_pct if var_pct > 0 else 0
 
-def calculate_zscore(df_1m, period=20):
-    close = df_1m["Close"]
-    ma = close.rolling(period).mean().iloc[-1]
-    std = close.rolling(period).std().iloc[-1]
-    return (close.iloc[-1] - ma) / std if std != 0 else 0
+def calculate_zscore(close_series, period=20):
+    ma = close_series.rolling(period).mean().iloc[-1]
+    std = close_series.rolling(period).std().iloc[-1]
+    return (close_series.iloc[-1] - ma) / std if std != 0 else 0
 
 # ==========================================
 # 7. 网页主界面渲染
@@ -500,15 +498,24 @@ if st.session_state.get('run_engine', False):
                 st.warning(t["m_nodata"].format(sym))
                 continue
                 
-            df_1m.ta.sma(length=5, append=True)
-            df_1m.ta.sma(length=20, append=True)
-            df_1m.ta.vwap(append=True)
-            df_1m.ta.atr(length=14, append=True)
+            # 纯 Pandas 计算技术指标，不依赖 pandas-ta，100% 稳妥通过云端编译
+            df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
+            df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
+            df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
+            
+            high_low = df_1m["High"] - df_1m["Low"]
+            high_close = np.abs(df_1m["High"] - df_1m["Close"].shift())
+            low_close = np.abs(df_1m["Low"] - df_1m["Close"].shift())
+            true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+            df_1m["ATR"] = true_range.rolling(14).mean()
             
             curr = df_1m.iloc[-1]
-            price, vwap, atr = curr["Close"], curr["VWAP_D"], curr["ATRr_14"]
-            sma_f, sma_s = curr["SMA_5"], curr["SMA_20"]
-            z_score = calculate_zscore(df_1m)
+            price = curr["Close"]
+            vwap = curr["VWAP"] if not pd.isna(curr["VWAP"]) else price
+            atr = curr["ATR"] if not pd.isna(curr["ATR"]) else price * 0.02
+            sma_f = curr["SMA_5"] if not pd.isna(curr["SMA_5"]) else price
+            sma_s = curr["SMA_20"] if not pd.isna(curr["SMA_20"]) else price
+            z_score = calculate_zscore(df_1m["Close"])
             
             act, color, reason = t["a_hold"], "normal", t["a_hold_r"]
             
@@ -545,7 +552,7 @@ if st.session_state.get('run_engine', False):
                         low=plot_df['Low'], close=plot_df['Close'], name='Price'
                     ))
                     fig.add_trace(go.Scatter(
-                        x=plot_df.index, y=plot_df['VWAP_D'], 
+                        x=plot_df.index, y=plot_df['VWAP'], 
                         mode='lines', name='VWAP', line=dict(color='magenta', width=2, dash='dash')
                     ))
                     fig.update_layout(
