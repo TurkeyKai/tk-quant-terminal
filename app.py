@@ -20,7 +20,7 @@ if __name__ == '__main__':
 # 1. 页面全局配置
 # ==========================================
 st.set_page_config(
-    page_title="TK Quant & Actuarial Terminal", 
+    page_title="TK Quant Terminal", 
     page_icon="📊", 
     layout="wide",
     initial_sidebar_state="expanded"
@@ -204,7 +204,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 Set your parameters on the left and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 Set your preferences on the left and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -278,7 +278,7 @@ LANG_DICT = {
             "m_subtitle": "Tableau de bord multifactoriel",
             "m_fetching": "Connexion aux flux de marché...",
             "m_bm_bull": "**Environnement**: 🟢 Référence ({0}) en hausse. Environnement sain.",
-            "m_bm_bear": **Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
+            "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
             "m_report": "🏷️ Rapport: {0} ({1})",
@@ -295,7 +295,7 @@ LANG_DICT = {
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
             "m_waiting": "👈 Définissez vos préférences à gauche et cliquez sur **Lancer**.",
-            "a_hold": "ATTENTE",
+            "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
             "a_buy_r": "Marché sain, prix supérieur au coût moyen.",
