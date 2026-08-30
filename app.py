@@ -34,14 +34,14 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（完美精简统一）
+# 2. 国际化与多语言词典（精简为：简体中文、英文、法语）
 # ==========================================
 LANG_DICT = {
     "CN": {
         "ui_lang": "🌐 语言 / LANGUAGE",
         "ui_mode": "⚙️ 版本 / MODE",
         "ui_theme": "🎨 外观 / THEME",
-        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
+        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 基础策略版 (Basic)", "🔥 机构专业版 (Pro)"],
         "themes": ["☀️ 日间模式", "🌙 夜间模式", "💻 跟随系统"],
         "PRO": {
@@ -133,107 +133,11 @@ LANG_DICT = {
             "a_sell_r": "趋势形态破位，建议执行纪律性减仓。"
         }
     },
-    "ZH": {  # 繁体中文
-        "ui_lang": "🌐 語言 / LANGUAGE",
-        "ui_mode": "⚙️ 版本 / MODE",
-        "ui_theme": "🎨 外觀 / THEME",
-        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
-        "modes": ["🟢 基礎策略版 (Basic)", "🔥 機構專業版 (Pro)"],
-        "themes": ["☀️ 日間模式", "🌙 夜間模式", "💻 跟隨系統"],
-        "PRO": {
-            "sb_title": "### 📊 TK Quant Terminal",
-            "sb_caption": "機構級量化與精算風控引擎 | **By Kai Teng**",
-            "sb_settings": "⚙️ 策略與因子參數",
-            "sb_pool": "多資產自選監控池:",
-            "sb_pool_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (華天科技)\n- **加密資產**: `BTC-USD`",
-            "sb_bm": "宏觀基準資產 (Benchmark):",
-            "sb_bm_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認！\n- `SPY` / `000001.SS` (上證指數)",
-            "sb_actuarial": "#### 💰 資本配置與風控管理",
-            "sb_capital": "策略模擬初始本金 ($):",
-            "sb_winrate": "策略歷史勝率 (Win Rate):",
-            "sb_wlratio": "盈虧賠率 (W/L Ratio):",
-            "sb_btn": "🚀 執行多因子量化掃描",
-            "m_title": "📊 宏微觀雙週期量化決策矩陣",
-            "m_subtitle": "Powered by **TK's Actuarial & Quantitative Architecture**",
-            "m_fetching": "核心引擎正在調動全球網路節點彙聚高頻行情...",
-            "m_bm_bull": "**宏觀風控閥**: 🟢 基準資產 ({0}) 運行於長期均線上方，多頭策略敞口正常釋放。",
-            "m_bm_bear": "**宏觀風控閥**: 🔴 基準資產 ({0}) 下破 20 日生命線，全策略風控熔斷啟動！",
-            "m_calc": "正在執行多維量價矩陣測算: {0}...",
-            "m_nodata": "無法獲取標的 {0} 的有效行情數據。",
-            "m_price": "最新成交價",
-            "m_vwap": "機構成本基準 (VWAP)",
-            "m_zscore": "統計動量 (Z-Score)",
-            "m_kelly": "凱利最優倉位",
-            "m_var": "95% 單日 VaR 風險值",
-            "m_chart_title": "{0} ({1}) - 近 60 週期微觀結構與機構 VWAP 錨點",
-            "m_ai_decision": "#### 🤖 策略信號裁決",
-            "m_logic": "核心邏輯",
-            "m_risk_params": "#### 🛡️ 精算風控邊界",
-            "m_stop_loss": "動態防守止損位",
-            "m_kelly_ratio": "凱利配比",
-            "m_var_exp": "VaR 尾部風險敞口",
-            "m_waiting": "👈 請點擊左上角展開側邊欄配置策略參數與資產代碼（**輸入後請按回車鍵確認**），並點擊 **執行多因子量化掃描** 以加載終端。",
-            "a_hold": "NEUTRAL (中性觀望)",
-            "a_hold_r": "多空動能交織，未觸及統計顯著性閾值",
-            "a_buy": "LONG BREAKOUT (多頭突破)",
-            "a_buy_r": "宏觀環境安全，價格強勢上穿機構 VWAP 成本線",
-            "a_block": "RISK BLOCKED (風控攔截)",
-            "a_block_r": "觸發系統級宏觀風控閥阻斷",
-            "a_rev": "MEAN REVERSION (均值回歸)",
-            "a_rev_r": "價格出現統計學超跌，強烈的均值回歸需求觸發",
-            "a_sell": "TECHNICAL EXIT (破位止損)",
-            "a_sell_r": "微觀結構崩塌，動態指標觸及清倉警戒線"
-        },
-        "BASIC": {
-            "sb_title": "### 📊 TK 策略觀察終端",
-            "sb_caption": "專業量化策略輔助系統 | **By Kai Teng**",
-            "sb_settings": "⚙️ 策略參數配置",
-            "sb_pool": "自選股票池代碼:",
-            "sb_pool_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (華天科技)",
-            "sb_bm": "大盤對標資產 (如 SPY):",
-            "sb_bm_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- `SPY` / `000001.SS` (上證指數)",
-            "sb_actuarial": "#### 💰 資金分配與風控",
-            "sb_capital": "初始投資資金 ($):",
-            "sb_winrate": "策略預期勝率:",
-            "sb_wlratio": "盈虧比 (Reward/Risk):",
-            "sb_btn": "🚀 運行策略分析",
-            "m_title": "📊 資產多維量化評估報告",
-            "m_subtitle": "基於統計學與微觀結構的多因子量化看板",
-            "m_fetching": "正在建立市場數據連接...",
-            "m_bm_bull": "**市場環境**: 🟢 對標大盤 ({0}) 趨勢向上，整體環境安全。",
-            "m_bm_bear": "**市場環境**: 🔴 對標大盤 ({0}) 出現破位下行，系統建議收縮防線！",
-            "m_calc": "正在測算標的: {0}...",
-            "m_nodata": "未能檢索到 {0} 的行情，請核對代碼或後綴。",
-            "m_price": "當前成交價",
-            "m_vwap": "機構均價 (VWAP)",
-            "m_zscore": "動量指標",
-            "m_kelly": "建議配置金額",
-            "m_var": "單日最大風險敞口 (VaR)",
-            "m_chart_title": "{0} ({1}) 近期走勢與機構成本線",
-            "m_ai_decision": "#### 🤖 策略信號輸出",
-            "m_logic": "觸發原因",
-            "m_risk_params": "#### 🛡️ 風險風控基準",
-            "m_stop_loss": "建議止損位",
-            "m_kelly_ratio": "建議倉位比例",
-            "m_var_exp": "單日 VaR 風險值",
-            "m_waiting": "👈 請點擊左上角展開側邊欄輸入代碼（**按回車鍵確認**），點擊 **運行策略分析** 開始評估。",
-            "a_hold": "觀望中性",
-            "a_hold_r": "當前多空信號不明，建議保持流動性。",
-            "a_buy": "符合多頭策略",
-            "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
-            "a_block": "觸發風控攔截",
-            "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
-            "a_rev": "超跌反弹策略",
-            "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
-            "a_sell": "觸發離場信號",
-            "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
-        }
-    },
     "EN": {
         "ui_lang": "🌐 LANGUAGE",
         "ui_mode": "⚙️ MODE",
         "ui_theme": "🎨 THEME",
-        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
+        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 Basic Strategy", "🔥 Institutional Pro"],
         "themes": ["☀️ Day Mode", "🌙 Night Mode", "💻 System Default"],
         "PRO": {
@@ -330,7 +234,7 @@ LANG_DICT = {
         "ui_lang": "🌐 LANGUE",
         "ui_mode": "⚙️ MODE",
         "ui_theme": "🎨 THÈME",
-        "lang_options": ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"],
+        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
         "modes": ["🟢 Version Basique", "🔥 Version Pro"],
         "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
@@ -426,38 +330,21 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染（单行完美匀称三列）
+# 3. 顶栏控制台渲染（单行、匀称、绝不重复）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
-with col_ui1:
-    # 临时用默认字典获取初始标题
-    st.markdown(f'<div class="control-label">{LANG_DICT["CN"]["ui_lang"]}</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
-    if "简体" in lang_str:
-        lang = "CN"
-    elif "繁體" in lang_str:
-        lang = "ZH"
-    elif "English" in lang_str:
-        lang = "EN"
-    else:
-        lang = "FR"
-
+# 先默认获取简体中文的 UI 标签防报错
+lang = "CN"
 ui_t = LANG_DICT[lang]
 
 with col_ui1:
-    pass # 清理多余列引用
-
-with col_ui1:
-    # 重新在第一列精准渲染正确的语言标签与选择器
     st.markdown(f'<div class="control-label">{ui_t["ui_lang"]}</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language_Select", ui_t["lang_options"], index=0 if lang=="CN" else (1 if lang=="ZH" else (2 if lang=="EN" else 3)), horizontal=True, label_visibility="collapsed")
-    if "简体" in lang_str or "简中" in lang_str:
+    lang_str = st.radio("Language_Select", ui_t["lang_options"], index=0, horizontal=True, label_visibility="collapsed")
+    if "简体中文" in lang_str:
         lang = "CN"
-    elif "繁體" in lang_str or "繁中" in lang_str:
-        lang = "ZH"
-    elif "English" in lang_str or "EN" in lang_str:
+    elif "English" in lang_str:
         lang = "EN"
     else:
         lang = "FR"
@@ -466,7 +353,7 @@ with col_ui1:
 with col_ui2:
     st.markdown(f'<div class="control-label">{ui_t["ui_mode"]}</div>', unsafe_allow_html=True)
     mode_str = st.radio("Mode", ui_t["modes"], index=0, horizontal=True, label_visibility="collapsed")
-    mode_key = "PRO" if any(x in mode_str for x in ["Pro", "专业版", "專業版"]) else "BASIC"
+    mode_key = "PRO" if any(x in mode_str for x in ["Pro", "专业版"]) else "BASIC"
 
 with col_ui3:
     st.markdown(f'<div class="control-label">{ui_t["ui_theme"]}</div>', unsafe_allow_html=True)
@@ -495,7 +382,7 @@ if any(x in theme_str for x in ["日间", "Day", "Jour"]):
     lbl_color = "#0066cc"
     radio_text_color = "#1c1c1e"
     plotly_template = "plotly_white"
-elif any(x in theme_str for x in ["夜间", "夜間", "Night", "Nuit"]):
+elif any(x in theme_str for x in ["夜间", "Night", "Nuit"]):
     bg_color = "#12141c"
     text_color = "#e1e4e8"
     sb_bg = "#181b26"
@@ -649,7 +536,7 @@ st.markdown("---")
 
 if st.session_state.get('run_engine', False):
     if not watchlist:
-        st.warning("⚠️ 请先在左侧侧边栏输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
+        st.warning("⚠️ 请先点击左上角菜单展开侧边栏，输入至少一个有效的资产代码，并**按回车键 (Enter)** 确认，然后再次点击执行按钮。")
     else:
         if not benchmark:
             benchmark = "SPY"
