@@ -34,7 +34,7 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（全面覆盖所有UI组件与报告内容）
+# 2. 国际化与多语言词典（全面适配各语言组件）
 # ==========================================
 LANG_DICT = {
     "CN": {
@@ -221,7 +221,7 @@ LANG_DICT = {
             "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
             "a_block": "觸發風控攔截",
             "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
-            "a_rev": "超跌反彈策略",
+            "a_rev": "超跌反弹策略",
             "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
             "a_sell": "觸發離場信號",
             "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
@@ -326,7 +326,7 @@ LANG_DICT = {
         "ui_lang": "🌐 CHOISIR LA LANGUE",
         "ui_mode": "⚙️ CHOISIR LE MODE",
         "ui_theme": "🎨 MODE THÈME",
-        "modes": ["🟢 Version Basique", "🔥 Version Pro Pro."],
+        "modes": ["🟢 Version Basique", "🔥 Version Pro"],
         "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
@@ -392,6 +392,7 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
+            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -419,17 +420,14 @@ LANG_DICT = {
     }
 }
 
-# 先读取当前的语言选择（默认简体中文）以加载动态的 radio 选项标签
-current_lang_temp = "CN" # 默认初始
-
 # ==========================================
-# 3. 顶栏控制台渲染（支持四种语言选项动态绑定）
+# 3. 顶栏控制台渲染（动态联动语言字典）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
-    # 语言选择
+    st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
     lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
     if "简体" in lang_str:
         lang = "CN"
@@ -440,7 +438,7 @@ with col_ui1:
     else:
         lang = "FR"
 
-# 根据当前选中的语言，获取对应的UI文本
+# 获取当前语言对应的动态 UI 文本
 ui_t = LANG_DICT[lang]
 
 with col_ui2:
@@ -462,9 +460,9 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼配色引擎
+# 4. 高级舒适护眼配色引擎（完美支持多语言外观关键词匹配）
 # ==========================================
-if "日间" in theme_str or "Day" in theme_str or "Jour" in theme_str:
+if any(x in theme_str for x in ["日间", "Day", "Jour"]):
     bg_color = "#fbfbfa"
     text_color = "#2c2c2e"
     sb_bg = "#f3f3f2"
@@ -475,7 +473,7 @@ if "日间" in theme_str or "Day" in theme_str or "Jour" in theme_str:
     lbl_color = "#0066cc"
     radio_text_color = "#1c1c1e"
     plotly_template = "plotly_white"
-elif "夜间" in theme_str or "Night" in theme_str or "Nuit" in theme_str:
+elif any(x in theme_str for x in ["夜间", "夜間", "Night", "Nuit"]):
     bg_color = "#12141c"
     text_color = "#e1e4e8"
     sb_bg = "#181b26"
