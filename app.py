@@ -304,19 +304,16 @@ col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
     st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
-    # index=0 对应 ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"] 中的第一个即 "🇨🇳 CN"
     lang_str = st.radio("Language", ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
     lang = "CN" if "CN" in lang_str else ("EN" if "EN" in lang_str else "FR")
 
 with col_ui2:
     st.markdown('<div class="control-label">⚙️ 请选择版本 / SELECT MODE</div>', unsafe_allow_html=True)
-    # index=0 对应 ["🟢 Basic (大众版)", "🔥 Pro (专业版)"] 中的第一个即大众版
     mode_str = st.radio("Mode", ["🟢 Basic (大众版)", "🔥 Pro (专业版)"], index=0, horizontal=True, label_visibility="collapsed")
     mode_key = "PRO" if "Pro" in mode_str else "BASIC"
 
 with col_ui3:
     st.markdown('<div class="control-label">🎨 请选择外观 / THEME MODE</div>', unsafe_allow_html=True)
-    # index=0 对应 ["☀️ 日间", "🌙 夜间", "💻 跟随系统"] 中的第一个即日间模式
     theme_str = st.radio("Theme", ["☀️ 日间", "🌙 夜间", "💻 跟随系统"], index=0, horizontal=True, label_visibility="collapsed")
 
 with col_logo:
@@ -365,11 +362,20 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式
+# 统一封装并安全注入 CSS 样式（已加入隐藏右下角 Manage app 和右上角菜单的代码）
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
+header {{visibility: hidden;}}
+
+[data-testid="stToolbar"] {{
+    display: none !important;
+}}
+.stStatusWidget {{
+    display: none !important;
+}}
+
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
 div.row-widget.stRadio > div {{ flex-direction: row; gap: 8px; }}
 
