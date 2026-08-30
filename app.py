@@ -45,6 +45,7 @@ LANG_DICT = {
             "sb_pool": "多资产自选监控池:",
             "sb_pool_help": "💡 **资产代码规范**:\n- **美股**: `AAPL`, `TSLA`, `NVDA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ` 华天科技)\n- **加密资产**: 加 `-USD` (如 `BTC-USD`)",
             "sb_bm": "宏观基准资产 (Benchmark):",
+            "sb_bm_help": "💡 **大盘指数参考示例**:\n- **美股标普**: `SPY` 或 `^GSPC`\n- **纳斯达克**: `QQQ` 或 `^IXIC`\n- **中国A股大盘**: `000001.SS` (上证指数)\n- **香港恒生指数**: `^HSI`",
             "sb_actuarial": "#### 💰 资本配置与风控管理",
             "sb_capital": "策略模拟初始本金 ($):",
             "sb_winrate": "策略历史胜率 (Win Rate):",
@@ -89,6 +90,7 @@ LANG_DICT = {
             "sb_pool": "自选股票池代码:",
             "sb_pool_help": "💡 **代码格式提示**:\n- **美股**: `AAPL`, `NVDA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技), `600519.SS`\n- **加密货币**: `BTC-USD`",
             "sb_bm": "大盘对标资产 (如 SPY):",
+            "sb_bm_help": "💡 **指数示例**: 美股标普 `SPY`, 纳指 `QQQ`, 上证指数 `000001.SS`, 恒生指数 `^HSI`",
             "sb_actuarial": "#### 💰 资金分配与风控",
             "sb_capital": "初始投资资金 ($):",
             "sb_winrate": "策略预期胜率:",
@@ -135,6 +137,7 @@ LANG_DICT = {
             "sb_pool": "Global Asset Watchlist:",
             "sb_pool_help": "💡 **Ticker Guide**: US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`), Crypto (`BTC-USD`)",
             "sb_bm": "Macro Benchmark:",
+            "sb_bm_help": "💡 **Index Examples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE Composite (`000001.SS`), Hang Seng (`^HSI`)",
             "sb_actuarial": "#### 💰 Capital & Risk Management",
             "sb_capital": "Simulated Capital ($):",
             "sb_winrate": "Strategy Win Rate:",
@@ -179,6 +182,7 @@ LANG_DICT = {
             "sb_pool": "Asset Watchlist:",
             "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), CN (`002185.SZ`), Crypto (`BTC-USD`)",
             "sb_bm": "Market Reference (e.g. SPY):",
+            "sb_bm_help": "💡 **Examples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
             "sb_actuarial": "#### 💰 Capital & Safety",
             "sb_capital": "Total Investment Capital ($):",
             "sb_winrate": "Target Win Rate:",
@@ -225,6 +229,7 @@ LANG_DICT = {
             "sb_pool": "Actifs surveillés:",
             "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), Chine (`002185.SZ`), Crypto (`BTC-USD`)",
             "sb_bm": "Référence Macro:",
+            "sb_bm_help": "💡 **Exemples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
             "sb_actuarial": "#### 💰 Gestion du Capital",
             "sb_capital": "Capital Simulé ($):",
             "sb_winrate": "Taux de Victoire Attendu:",
@@ -269,6 +274,7 @@ LANG_DICT = {
             "sb_pool": "Actifs à surveiller:",
             "sb_pool_help": "💡 **Format**: US (`AAPL`), HK (`0700.HK`), Chine (`002185.SZ`), Crypto (`BTC-USD`)",
             "sb_bm": "Référence (ex: SPY):",
+            "sb_bm_help": "💡 **Exemples**: S&P 500 (`SPY`), Nasdaq (`QQQ`), SSE (`000001.SS`)",
             "sb_actuarial": "#### 💰 Argent & Sécurité",
             "sb_capital": "Capital Total ($):",
             "sb_winrate": "Taux de Victoire:",
@@ -462,11 +468,16 @@ with st.sidebar:
     st.markdown("---")
     
     st.header(t["sb_settings"])
+    
+    # 资产池输入及全球市场提示
     symbols_input = st.text_input(t["sb_pool"], value="AAPL, 002185.SZ, TSLA")
-    st.caption(t["sb_pool_help"])  # 全球市场后缀输入指引
+    st.caption(t["sb_pool_help"]) 
     
     watchlist = [s.strip().upper() for s in symbols_input.split(",") if s.strip()]
+    
+    # 大盘基准资产输入及指数参考示例提示
     benchmark = st.text_input(t["sb_bm"], value="SPY").upper()
+    st.caption(t["sb_bm_help"])
     
     st.markdown(t["sb_actuarial"])
     capital = st.number_input(t["sb_capital"], min_value=10000, value=100000, step=10000)
@@ -523,7 +534,7 @@ if st.session_state.get('run_engine', False):
         try:
             ticker = yf.Ticker(sym)
             
-            # 自动获取公司全称（如 天水华天科技 / Apple Inc.），若无则使用代码
+            # 自动获取公司全称或指数名称
             try:
                 comp_name = ticker.info.get("longName", sym)
             except Exception:
@@ -572,7 +583,7 @@ if st.session_state.get('run_engine', False):
             var_95 = calculate_var(df_1d, target_pos)
 
             with st.container(border=True):
-                # 标题同时显示“公司全称”与“代码”
+                # 标题同时显示公司全称与代码
                 st.subheader(t["m_report"].format(comp_name, sym))
                 
                 col1, col2, col3, col4, col5 = st.columns(5)
