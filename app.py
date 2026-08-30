@@ -362,18 +362,19 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式（已加入隐藏右下角 Manage app 和右上角菜单的代码）
+# 统一封装并安全注入 CSS 样式（彻底隐藏右下角 Manage app 悬浮窗）
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 header {{visibility: hidden;}}
 
-[data-testid="stToolbar"] {{
+[data-testid="stToolbar"], 
+[data-testid="stDecoration"], 
+div[class*="viewerBadge"], 
+button[kind="header"] {{
     display: none !important;
-}}
-.stStatusWidget {{
-    display: none !important;
+    visibility: hidden !important;
 }}
 
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
