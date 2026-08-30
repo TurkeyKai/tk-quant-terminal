@@ -327,76 +327,59 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼与抗锯齿排版引擎（优化辨识度）
+# 4. 高级舒适护眼配色引擎 (强制修复单选按钮文字颜色)
 # ==========================================
 if "日间" in theme_str:
     bg_color = "#fbfbfa"
-    text_color = "#1f2328"        # 采用高对比度深炭灰，极易辨认
+    text_color = "#2c2c2e"
     sb_bg = "#f3f3f2"
     in_bg = "#ffffff"
-    in_color = "#111827"
+    in_color = "#1c1c1e"
     card_bg = "rgba(255, 255, 255, 0.95)"
-    card_border = "#d0d7de"
-    lbl_color = "#0969da"
-    radio_text_color = "#1f2328"
+    card_border = "#e2e2df"
+    lbl_color = "#0066cc"
+    radio_text_color = "#1c1c1e" # 日间模式选项文字色
     plotly_template = "plotly_white"
 elif "夜间" in theme_str:
     bg_color = "#12141c"
-    text_color = "#e2e8f0"        # 柔和暖银灰，不刺眼且清晰
+    text_color = "#e1e4e8"
     sb_bg = "#181b26"
-    in_bg = "#1e2330"
-    in_color = "#f8fafc"
-    card_bg = "rgba(27, 32, 45, 0.88)"
-    card_border = "rgba(255, 255, 255, 0.12)"
-    lbl_color = "#38bdf8"
-    radio_text_color = "#f1f5f9"  # 夜间模式下强制选项文字为高亮柔和白
+    in_bg = "#212635"
+    in_color = "#ffffff"
+    card_bg = "rgba(27, 32, 45, 0.85)"
+    card_border = "rgba(255, 255, 255, 0.08)"
+    lbl_color = "#58a6ff"
+    radio_text_color = "#f0f6fc" # 夜间模式下强制选项文字为高亮柔和白
     plotly_template = "plotly_dark"
 else:
     bg_color = "#12141c"
-    text_color = "#e2e8f0"
+    text_color = "#e1e4e8"
     sb_bg = "#181b26"
-    in_bg = "#1e2330"
-    in_color = "#f8fafc"
-    card_bg = "rgba(27, 32, 45, 0.88)"
-    card_border = "rgba(255, 255, 255, 0.12)"
-    lbl_color = "#38bdf8"
-    radio_text_color = "#f1f5f9"
+    in_bg = "#212635"
+    in_color = "#ffffff"
+    card_bg = "rgba(27, 32, 45, 0.85)"
+    card_border = "rgba(255, 255, 255, 0.08)"
+    lbl_color = "#58a6ff"
+    radio_text_color = "#f0f6fc"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入深度排版优化 CSS 样式
+# 统一封装并安全注入 CSS 样式
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
-
-/* 全局抗锯齿、字体及清晰度优化 */
-html, body, [class*="css"] {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.02em;
-    line-height: 1.6;
-}}
-
 div.row-widget.stRadio > div {{ flex-direction: row; gap: 8px; }}
 
-/* 强制单选按钮（Radio）内部的所有文字采用高清晰字色，彻底解决看不清问题 */
+/* 强制单选按钮（Radio）内部的所有文字采用当前模式的高清字色，彻底解决夜间发暗问题 */
 div.row-widget.stRadio label p {{
     color: {radio_text_color} !important;
     font-weight: 600 !important;
-    font-size: 0.95rem !important;
 }}
 
 .stApp {{
     background-color: {bg_color};
     color: {text_color};
-}}
-
-/* 正文与普通段落加粗一档，提升辨识度 */
-p, span, label, .stMarkdown {{
-    color: {text_color} !important;
-    font-weight: 500 !important;
 }}
 
 [data-testid="stSidebar"] {{ 
@@ -407,11 +390,10 @@ p, span, label, .stMarkdown {{
 [data-testid="stSidebar"] input {{ 
     background-color: {in_bg} !important; 
     color: {in_color} !important; 
-    font-weight: 600 !important;
 }}
 [data-testid="stSidebar"] label, [data-testid="stSidebar"] .stMarkdown p {{ 
     color: {text_color} !important; 
-    font-weight: 600 !important; 
+    font-weight: 500; 
 }}
 
 .top-control-card {{ 
@@ -423,7 +405,7 @@ p, span, label, .stMarkdown {{
     backdrop-filter: blur(12px); 
 }}
 .control-label {{ 
-    font-size: 0.82rem; 
+    font-size: 0.8rem; 
     font-weight: 800; 
     text-transform: uppercase; 
     letter-spacing: 0.06em; 
