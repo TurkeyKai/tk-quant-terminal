@@ -326,7 +326,7 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼配色引擎 (强制修复夜间单选按钮文字颜色发暗)
+# 4. 高级舒适护眼配色引擎 (完美覆盖单选按钮文字颜色)
 # ==========================================
 if "日间" in theme_str:
     bg_color = "#fbfbfa"
@@ -348,7 +348,7 @@ elif "夜间" in theme_str:
     card_bg = "rgba(27, 32, 45, 0.85)"
     card_border = "rgba(255, 255, 255, 0.08)"
     lbl_color = "#58a6ff"
-    radio_text_color = "#ffffff"  # 强制夜间单选文字为纯白高亮
+    radio_text_color = "#ffffff"  # 强制夜间单选选项文字为亮白色
     plotly_template = "plotly_dark"
 else:
     bg_color = "#12141c"
@@ -362,7 +362,7 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式（彻底修复 Radio 选项文字颜色）
+# 统一封装并安全注入 CSS 样式（使用最高权重选择器穿透 Streamlit 默认样式）
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
@@ -370,7 +370,7 @@ footer {{visibility: hidden;}}
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
 div.row-widget.stRadio > div {{ flex-direction: row; gap: 8px; }}
 
-div.row-widget.stRadio label, div.row-widget.stRadio label span, div.row-widget.stRadio p {{
+div.stRadio label, div.stRadio span, div.stRadio div, div.stRadio p {{
     color: {radio_text_color} !important;
     font-weight: 600 !important;
 }}
@@ -446,7 +446,7 @@ with st.sidebar:
         st.session_state['run_engine'] = True 
 
 # ==========================================
-# 6. 核心精算与策略函数 (纯 Pandas 实现，规避云端编译报错)
+# 6. 核心精算与策略函数 (纯 Pandas 实现，完美适配所有 Python 版本)
 # ==========================================
 def calculate_kelly(p, b):
     return (p * b - (1 - p)) / b
@@ -498,7 +498,7 @@ if st.session_state.get('run_engine', False):
                 st.warning(t["m_nodata"].format(sym))
                 continue
                 
-            # 纯 Pandas 计算技术指标，不依赖 pandas-ta，100% 稳妥通过云端编译
+            # 纯 Pandas 计算技术指标，彻底规避云端编译报错
             df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
             df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
             df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
