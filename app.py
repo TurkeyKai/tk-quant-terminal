@@ -17,13 +17,13 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置
+# 1. 页面全局配置（默认将侧边栏折叠收起）
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
     page_icon="📊", 
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # ==========================================
@@ -34,7 +34,7 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（精简统一顶栏标题，实现视觉匀称）
+# 2. 国际化与多语言词典（全面适配各语言组件）
 # ==========================================
 LANG_DICT = {
     "CN": {
@@ -75,7 +75,7 @@ LANG_DICT = {
             "m_stop_loss": "动态防守止损位",
             "m_kelly_ratio": "凯利配比",
             "m_var_exp": "VaR 尾部风险敞口",
-            "m_waiting": "👈 请在左侧侧边栏配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
+            "m_waiting": "👈 请点击左上角展开侧边栏，配置策略参数与资产代码（**输入后请按回车键确认**），并点击 **执行多因子量化扫描** 以加载终端。",
             "a_hold": "NEUTRAL (中性观望)",
             "a_hold_r": "多空动能交织，未触及统计显著性阈值",
             "a_buy": "LONG BREAKOUT (多头突破)",
@@ -119,7 +119,7 @@ LANG_DICT = {
             "m_stop_loss": "建议止损价",
             "m_kelly_ratio": "建议仓位比例",
             "m_var_exp": "单日 VaR 风险值",
-            "m_waiting": "👈 请在左侧输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
+            "m_waiting": "👈 请点击左上角展开侧边栏输入代码（**按回车键确认**），点击 **运行策略分析** 开始评估。",
             "a_hold": "观望中性",
             "a_hold_r": "当前多空信号不明，建议保持流动性。",
             "a_buy": "符合多头策略",
@@ -170,7 +170,7 @@ LANG_DICT = {
             "m_stop_loss": "動態防守止損位",
             "m_kelly_ratio": "凱利配比",
             "m_var_exp": "VaR 尾部風險敞口",
-            "m_waiting": "👈 請在左側側邊欄配置策略參數與資產代碼（**輸入後請按回車鍵確認**），並點擊 **執行多因子量化掃描** 以加載終端。",
+            "m_waiting": "👈 請點擊左上角展開側邊欄配置策略參數與資產代碼（**輸入後請按回車鍵確認**），並點擊 **執行多因子量化掃描** 以加載終端。",
             "a_hold": "NEUTRAL (中性觀望)",
             "a_hold_r": "多空動能交織，未觸及統計顯著性閾值",
             "a_buy": "LONG BREAKOUT (多頭突破)",
@@ -214,14 +214,14 @@ LANG_DICT = {
             "m_stop_loss": "建議止損位",
             "m_kelly_ratio": "建議倉位比例",
             "m_var_exp": "單日 VaR 風險值",
-            "m_waiting": "👈 請在左側輸入代碼（**按回車鍵確認**），點擊 **運行策略分析** 開始評估。",
+            "m_waiting": "👈 請點擊左上角展開側邊欄輸入代碼（**按回車鍵確認**），點擊 **運行策略分析** 開始評估。",
             "a_hold": "觀望中性",
             "a_hold_r": "當前多空信號不明，建議保持流動性。",
             "a_buy": "符合多頭策略",
             "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
             "a_block": "觸發風控攔截",
             "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
-            "a_rev": "超跌反彈策略",
+            "a_rev": "超跌反弹策略",
             "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
             "a_sell": "觸發離場信號",
             "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
@@ -265,7 +265,7 @@ LANG_DICT = {
             "m_stop_loss": "Dynamic Stop Loss",
             "m_kelly_ratio": "Kelly Ratio",
             "m_var_exp": "VaR Tail Exposure",
-            "m_waiting": "👈 Configure parameters and tickers (press **Enter**), then click **Execute**.",
+            "m_waiting": "👈 Click the top-left menu to expand sidebar, configure tickers (press **Enter**), and click **Execute**.",
             "a_hold": "NEUTRAL",
             "a_hold_r": "Mixed momentum, statistical threshold not met",
             "a_buy": "LONG BREAKOUT",
@@ -310,7 +310,7 @@ LANG_DICT = {
             "m_stop_loss": "Suggested Stop Loss",
             "m_kelly_ratio": "Suggested Weight",
             "m_var_exp": "Daily VaR Exposure",
-            "m_waiting": "👈 Set your preferences, press **Enter**, and click **Run Strategy Analysis**.",
+            "m_waiting": "👈 Click top-left to expand sidebar, set preferences, press **Enter**, and click **Run Strategy Analysis**.",
             "a_hold": "HOLD",
             "a_hold_r": "Trend unclear, maintaining liquidity.",
             "a_buy": "BUY SIGNAL",
@@ -361,7 +361,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Dynamique",
             "m_kelly_ratio": "Ratio Kelly",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Configurez et appuyez sur **Entrée**, puis cliquez sur **Exécuter**.",
+            "m_waiting": "👈 Ouvrez le menu en haut à gauche, configurez (appuyez sur **Entrée**), puis cliquez sur **Exécuter**.",
             "a_hold": "NEUTRE",
             "a_hold_r": "Momentum mixte, seuil statistique non atteint",
             "a_buy": "CASSURE HAUSSIÈRE",
@@ -393,6 +393,7 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
+            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -405,7 +406,7 @@ LANG_DICT = {
             "m_stop_loss": "Stop Loss Suggéré",
             "m_kelly_ratio": "Poids Suggéré",
             "m_var_exp": "Exposition VaR",
-            "m_waiting": "👈 Définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
+            "m_waiting": "👈 Ouvrez le menu en haut à gauche, définissez vos préférences (appuyez sur **Entrée**), puis cliquez sur **Lancer**.",
             "a_hold": "ATTENDRE & OBSERVER",
             "a_hold_r": "Tendance floue, conservation de liquidité.",
             "a_buy": "SIGNAL D'ACHAT",
@@ -427,7 +428,6 @@ st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
-    # 语言选择
     lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
     if "简体" in lang_str:
         lang = "CN"
@@ -438,19 +438,13 @@ with col_ui1:
     else:
         lang = "FR"
 
-# 获取当前语言对应的动态 UI 文本
 ui_t = LANG_DICT[lang]
-
-with col_ui1: # 利用第一列上方统一渲染匀称的标题
-    pass # 标题我们在下面动态注入
 
 with col_ui1:
     pass
 
-# 用精简匀称的动态标签覆盖原顶栏
 with col_ui1:
     st.markdown(f'<div class="control-label">{ui_t["ui_lang"]}</div>', unsafe_allow_html=True)
-    # 重写 radio 让它紧跟在标签下方
     lang_str = st.radio("Language_Select", ["🇨🇳 简中", "🇭🇰 繁中", "🇬🇧 EN", "🇫🇷 FR"], index=0 if lang=="CN" else (1 if lang=="ZH" else (2 if lang=="EN" else 3)), horizontal=True, label_visibility="collapsed")
     if "简中" in lang_str:
         lang = "CN"
@@ -460,7 +454,7 @@ with col_ui1:
         lang = "EN"
     else:
         lang = "FR"
-    ui_t = LANG_DICT[lang] # 实时更新
+    ui_t = LANG_DICT[lang]
 
 with col_ui2:
     st.markdown(f'<div class="control-label">{ui_t["ui_mode"]}</div>', unsafe_allow_html=True)
