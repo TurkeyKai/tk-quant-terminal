@@ -34,13 +34,13 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（全面适配各语言组件）
+# 2. 国际化与多语言词典（精简统一顶栏标题，实现视觉匀称）
 # ==========================================
 LANG_DICT = {
     "CN": {
-        "ui_lang": "🌐 请选择语言 / SELECT LANGUAGE",
-        "ui_mode": "⚙️ 请选择版本 / SELECT MODE",
-        "ui_theme": "🎨 请选择外观 / THEME MODE",
+        "ui_lang": "🌐 语言 / LANGUAGE",
+        "ui_mode": "⚙️ 版本 / MODE",
+        "ui_theme": "🎨 外观 / THEME",
         "modes": ["🟢 基础策略版 (Basic)", "🔥 机构专业版 (Pro)"],
         "themes": ["☀️ 日间模式", "🌙 夜间模式", "💻 跟随系统"],
         "PRO": {
@@ -133,9 +133,9 @@ LANG_DICT = {
         }
     },
     "ZH": {  # 繁体中文
-        "ui_lang": "🌐 請選擇語言 / SELECT LANGUAGE",
-        "ui_mode": "⚙️ 請選擇版本 / SELECT MODE",
-        "ui_theme": "🎨 請選擇外觀 / THEME MODE",
+        "ui_lang": "🌐 語言 / LANGUAGE",
+        "ui_mode": "⚙️ 版本 / MODE",
+        "ui_theme": "🎨 外觀 / THEME",
         "modes": ["🟢 基礎策略版 (Basic)", "🔥 機構專業版 (Pro)"],
         "themes": ["☀️ 日間模式", "🌙 夜間模式", "💻 跟隨系統"],
         "PRO": {
@@ -221,16 +221,16 @@ LANG_DICT = {
             "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
             "a_block": "觸發風控攔截",
             "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
-            "a_rev": "超跌反弹策略",
+            "a_rev": "超跌反彈策略",
             "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
             "a_sell": "觸發離場信號",
             "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
         }
     },
     "EN": {
-        "ui_lang": "🌐 SELECT LANGUAGE",
-        "ui_mode": "⚙️ SELECT MODE",
-        "ui_theme": "🎨 THEME MODE",
+        "ui_lang": "🌐 LANGUAGE",
+        "ui_mode": "⚙️ MODE",
+        "ui_theme": "🎨 THEME",
         "modes": ["🟢 Basic Strategy", "🔥 Institutional Pro"],
         "themes": ["☀️ Day Mode", "🌙 Night Mode", "💻 System Default"],
         "PRO": {
@@ -297,6 +297,7 @@ LANG_DICT = {
             "m_bm_bear": "**Market Environment**: 🔴 Benchmark ({0}) downtrend. Caution advised.",
             "m_calc": "Analyzing asset: {0}...",
             "m_nodata": "No data found for {0}.",
+            "m_report": "🏷️ Report: {0} ({1})",
             "m_price": "Current Price",
             "m_vwap": "Institutional Cost",
             "m_zscore": "Momentum Score",
@@ -323,9 +324,9 @@ LANG_DICT = {
         }
     },
     "FR": {
-        "ui_lang": "🌐 CHOISIR LA LANGUE",
-        "ui_mode": "⚙️ CHOISIR LE MODE",
-        "ui_theme": "🎨 MODE THÈME",
+        "ui_lang": "🌐 LANGUE",
+        "ui_mode": "⚙️ MODE",
+        "ui_theme": "🎨 THÈME",
         "modes": ["🟢 Version Basique", "🔥 Version Pro"],
         "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
@@ -392,7 +393,6 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
-            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -427,7 +427,7 @@ st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
-    st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
+    # 语言选择
     lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
     if "简体" in lang_str:
         lang = "CN"
@@ -441,10 +441,31 @@ with col_ui1:
 # 获取当前语言对应的动态 UI 文本
 ui_t = LANG_DICT[lang]
 
+with col_ui1: # 利用第一列上方统一渲染匀称的标题
+    pass # 标题我们在下面动态注入
+
+with col_ui1:
+    pass
+
+# 用精简匀称的动态标签覆盖原顶栏
+with col_ui1:
+    st.markdown(f'<div class="control-label">{ui_t["ui_lang"]}</div>', unsafe_allow_html=True)
+    # 重写 radio 让它紧跟在标签下方
+    lang_str = st.radio("Language_Select", ["🇨🇳 简中", "🇭🇰 繁中", "🇬🇧 EN", "🇫🇷 FR"], index=0 if lang=="CN" else (1 if lang=="ZH" else (2 if lang=="EN" else 3)), horizontal=True, label_visibility="collapsed")
+    if "简中" in lang_str:
+        lang = "CN"
+    elif "繁中" in lang_str:
+        lang = "ZH"
+    elif "EN" in lang_str:
+        lang = "EN"
+    else:
+        lang = "FR"
+    ui_t = LANG_DICT[lang] # 实时更新
+
 with col_ui2:
     st.markdown(f'<div class="control-label">{ui_t["ui_mode"]}</div>', unsafe_allow_html=True)
     mode_str = st.radio("Mode", ui_t["modes"], index=0, horizontal=True, label_visibility="collapsed")
-    mode_key = "PRO" if ("Pro" in mode_str or "专业版" in mode_str or "專業版" in mode_str) else "BASIC"
+    mode_key = "PRO" if any(x in mode_str for x in ["Pro", "专业版", "專業版"]) else "BASIC"
 
 with col_ui3:
     st.markdown(f'<div class="control-label">{ui_t["ui_theme"]}</div>', unsafe_allow_html=True)
@@ -460,7 +481,7 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼配色引擎（完美支持多语言外观关键词匹配）
+# 4. 高级舒适护眼配色引擎
 # ==========================================
 if any(x in theme_str for x in ["日间", "Day", "Jour"]):
     bg_color = "#fbfbfa"
