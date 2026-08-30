@@ -77,7 +77,7 @@ LANG_DICT = {
         },
         "BASIC": {
             "sb_title": "### 📊 TK 智能投资助手",
-            "sb_caption": "简单易懂 d的 AI 炒股辅助工具 | **By Kai Teng**",
+            "sb_caption": "简单易懂的 AI 炒股辅助工具 | **By Kai Teng**",
             "sb_settings": "⚙️ 投资偏好设置",
             "sb_pool": "关注的股票代码:",
             "sb_pool_help": "💡 **输入提示**:\n- **美股**: 如 `AAPL` (苹果), `TSLA` (特斯拉)\n- **港股**: 加 `.HK` (如 `0700.HK` 腾讯)\n- **A股**: 加 `.SS` 或 `.SZ` (如 `600519.SS` 茅台)\n- **币圈**: 加 `-USD` (如 `BTC-USD`)",
@@ -441,7 +441,7 @@ st.markdown(unified_css, unsafe_allow_html=True)
 t = LANG_DICT[lang][mode_key]
 
 # ==========================================
-# 5. 侧边栏：交互面板（带有全球市场代码输入提示）
+# 5. 侧边栏：交互面板（加入 watchlist 解析）
 # ==========================================
 with st.sidebar:
     sidebar_avatar = "avatar.png"
@@ -456,7 +456,10 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     symbols_input = st.text_input(t["sb_pool"], value="AAPL, TSLA, NVDA")
-    st.caption(t["sb_pool_help"])  # 渲染全球市场的后缀提示
+    st.caption(t["sb_pool_help"])  # 全球市场输入指引
+    
+    # 完美修复：在此处重新定义 watchlist 列表
+    watchlist = [s.strip().upper() for s in symbols_input.split(",") if s.strip()]
     
     benchmark = st.text_input(t["sb_bm"], value="SPY").upper()
     
@@ -515,7 +518,7 @@ if st.session_state.get('run_engine', False):
         try:
             ticker = yf.Ticker(sym)
             
-            # 自动获取公司全称（如 Apple Inc.），若无则使用代码
+            # 获取公司全称（如 Apple Inc.），若无则使用代码
             try:
                 comp_name = ticker.info.get("longName", sym)
             except Exception:
