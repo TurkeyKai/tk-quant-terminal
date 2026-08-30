@@ -35,7 +35,8 @@ LANG_DICT = {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "机构级量化与精算风控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 引擎参数设置",
-            "sb_pool": "自选监控池 (逗号分隔):",
+            "sb_pool": "自选监控池 (支持全球市场):",
+            "sb_pool_help": "💡 **全球市场代码输入指南**:\n- **美股**: 直接输代码 (如 `AAPL`, `TSLA`, `NVDA`)\n- **港股**: 加上 `.HK` (如腾讯 `0700.HK`, 阿里 `9988.HK`)\n- **A股**: 上海 `.SS`, 深圳 `.SZ` (如茅台 `600519.SS`)\n- **加密货币**: 加上 `-USD` (如 `BTC-USD`, `ETH-USD`)",
             "sb_bm": "大盘风控锚点 (Benchmark):",
             "sb_actuarial": "#### 💰 精算与资金管理",
             "sb_capital": "模拟账户本金 ($):",
@@ -49,20 +50,20 @@ LANG_DICT = {
             "m_bm_bear": "**宏观风控阀**: 🔴 {0} 大盘跌破 20 日均线生命线，全局风控拦截开启！",
             "m_calc": "正在进行多维矩阵与量价测算: {0}...",
             "m_nodata": "无法获取 {0} 的有效数据。",
-            "m_report": "🏷️ {0} 深度研报切片",
+            "m_report": "🏷️ {0} ({1}) 深度研报切片",
             "m_price": "最新成交价",
             "m_vwap": "机构成本 (VWAP)",
             "m_zscore": "统计动量 (Z-Score)",
             "m_kelly": "Kelly 目标仓位",
             "m_var": "95% 单日 VaR",
-            "m_chart_title": "{0} 最近 60 周期微观结构",
+            "m_chart_title": "{0} ({1}) 最近 60 周期微观结构",
             "m_ai_decision": "#### 🤖 算法决断",
             "m_logic": "逻辑",
             "m_risk_params": "#### 🛡️ 精算风控参数",
             "m_stop_loss": "防守止损位",
             "m_kelly_ratio": "Kelly 比例",
             "m_var_exp": "VaR 尾部敞口",
-            "m_waiting": "👈 请 in 左侧侧边栏设置风控参数，并点击 **启动 TK 云端量化引擎**。",
+            "m_waiting": "👈 请在左侧侧边栏设置风控参数，并点击 **启动 TK 云端量化引擎**。",
             "a_hold": "HOLD (震荡观望)",
             "a_hold_r": "动能交织，方向未明",
             "a_buy": "STRONG BUY (量价突破)",
@@ -76,9 +77,10 @@ LANG_DICT = {
         },
         "BASIC": {
             "sb_title": "### 📊 TK 智能投资助手",
-            "sb_caption": "简单易懂的 AI 炒股辅助工具 | **By Kai Teng**",
+            "sb_caption": "简单易懂 d的 AI 炒股辅助工具 | **By Kai Teng**",
             "sb_settings": "⚙️ 投资偏好设置",
-            "sb_pool": "关注的股票 (输入代码，逗号隔开):",
+            "sb_pool": "关注的股票代码:",
+            "sb_pool_help": "💡 **输入提示**:\n- **美股**: 如 `AAPL` (苹果), `TSLA` (特斯拉)\n- **港股**: 加 `.HK` (如 `0700.HK` 腾讯)\n- **A股**: 加 `.SS` 或 `.SZ` (如 `600519.SS` 茅台)\n- **币圈**: 加 `-USD` (如 `BTC-USD`)",
             "sb_bm": "参考的大盘 (如 SPY 代表美股):",
             "sb_actuarial": "#### 💰 资金与安全保护",
             "sb_capital": "准备投资的总金额 ($):",
@@ -86,19 +88,19 @@ LANG_DICT = {
             "sb_wlratio": "赚一次和亏一次的比例 (盈亏比):",
             "sb_btn": "🚀 开始 AI 智能分析",
             "m_title": "📊 智能股票体检报告",
-            "m_subtitle": "利用大数据帮你把脉股票走势",
+            "m_subtitle": "利用大数据帮你把脉全球市场走势",
             "m_fetching": "正在从网上拉取最新的股票行情...",
             "m_bm_bull": "**大盘环境**: 🟢 现在 {0} 大盘整体趋势向上，是个可以考虑入场的好时机。",
             "m_bm_bear": "**大盘环境**: 🔴 现在 {0} 大盘整体在跌，系统建议暂时管住手，不买股票！",
             "m_calc": "正在诊断股票: {0}...",
-            "m_nodata": "找不到 {0} 的数据，请检查代码拼写。",
-            "m_report": "🏷️ {0} 智能诊断结果",
+            "m_nodata": "找不到 {0} 的数据，请检查代码拼写或市场后缀。",
+            "m_report": "🏷️ {0} ({1}) 智能诊断结果",
             "m_price": "当前价格",
             "m_vwap": "主力平均成本",
             "m_zscore": "短期爆发力",
             "m_kelly": "建议买入金额",
             "m_var": "最坏可能亏损 (每天)",
-            "m_chart_title": "{0} 最近几小时的走势图",
+            "m_chart_title": "{0} ({1}) 最近几小时的走势图",
             "m_ai_decision": "#### 🤖 AI 给你的建议",
             "m_logic": "原因",
             "m_risk_params": "#### 🛡️ 安全保护建议",
@@ -123,7 +125,8 @@ LANG_DICT = {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Institutional Quant & Actuarial Engine | **By Kai Teng**",
             "sb_settings": "⚙️ Engine Parameters",
-            "sb_pool": "Watchlist (comma separated):",
+            "sb_pool": "Global Watchlist:",
+            "sb_pool_help": "💡 **Suffix Guide**: US (`AAPL`), HK (`0700.HK`), China (`600519.SS`), Crypto (`BTC-USD`)",
             "sb_bm": "Macro Benchmark:",
             "sb_actuarial": "#### 💰 Actuarial & Capital Management",
             "sb_capital": "Simulated Capital ($):",
@@ -137,13 +140,13 @@ LANG_DICT = {
             "m_bm_bear": "**Macro Risk Valve**: 🔴 {0} fell below 20-MA, global risk block engaged!",
             "m_calc": "Calculating multidimensional matrix for: {0}...",
             "m_nodata": "Cannot fetch valid data for {0}.",
-            "m_report": "🏷️ {0} Deep Report Profile",
+            "m_report": "🏷️ {0} ({1}) Deep Report Profile",
             "m_price": "Latest Price",
             "m_vwap": "Inst. Cost (VWAP)",
             "m_zscore": "Stat Momentum (Z-Score)",
             "m_kelly": "Kelly Target Pos",
             "m_var": "95% Daily VaR",
-            "m_chart_title": "{0} Last 60 Periods Microstructure",
+            "m_chart_title": "{0} ({1}) Last 60 Periods Microstructure",
             "m_ai_decision": "#### 🤖 AI Decision",
             "m_logic": "Logic",
             "m_risk_params": "#### 🛡️ Actuarial Risk Params",
@@ -166,7 +169,8 @@ LANG_DICT = {
             "sb_title": "### 📊 TK Smart Investor",
             "sb_caption": "Easy-to-use AI Stock Assistant | **By Kai Teng**",
             "sb_settings": "⚙️ Investment Settings",
-            "sb_pool": "Stocks to watch (comma separated):",
+            "sb_pool": "Global Stocks to watch:",
+            "sb_pool_help": "💡 **Tip**: US (`AAPL`), HK (`0700.HK`), China (`600519.SS`), Crypto (`BTC-USD`)",
             "sb_bm": "Market Reference (e.g. SPY):",
             "sb_actuarial": "#### 💰 Money & Safety",
             "sb_capital": "Total Money to Invest ($):",
@@ -180,13 +184,13 @@ LANG_DICT = {
             "m_bm_bear": "**Market Environment**: 🔴 The {0} market is dropping. Better to wait and do nothing!",
             "m_calc": "Diagnosing stock: {0}...",
             "m_nodata": "Cannot find data for {0}. Check spelling.",
-            "m_report": "🏷️ {0} AI Diagnosis Result",
+            "m_report": "🏷️ {0} ({1}) AI Diagnosis Result",
             "m_price": "Current Price",
             "m_vwap": "Average Market Cost",
             "m_zscore": "Short-term Strength",
             "m_kelly": "Suggested Investment",
             "m_var": "Max Expected Daily Loss",
-            "m_chart_title": "{0} Recent Price Trend",
+            "m_chart_title": "{0} ({1}) Recent Price Trend",
             "m_ai_decision": "#### 🤖 AI Suggestion",
             "m_logic": "Reason",
             "m_risk_params": "#### 🛡️ Safety Tips",
@@ -211,7 +215,8 @@ LANG_DICT = {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Moteur Quant. et Actuariel | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres du Moteur",
-            "sb_pool": "Liste de surveillance (séparées par virgules):",
+            "sb_pool": "Liste mondiale:",
+            "sb_pool_help": "💡 **Suffixes**: US (`AAPL`), HK (`0700.HK`), Chine (`600519.SS`), Crypto (`BTC-USD`)",
             "sb_bm": "Référence Macro:",
             "sb_actuarial": "#### 💰 Gestion du Capital",
             "sb_capital": "Capital Simulé ($):",
@@ -225,13 +230,13 @@ LANG_DICT = {
             "m_bm_bear": "**Valve de Risque Macro**: 🔴 {0} sous la MA-20, blocage global activé!",
             "m_calc": "Calcul de la matrice multidimensionnelle pour: {0}...",
             "m_nodata": "Données non valides pour {0}.",
-            "m_report": "🏷️ Profil de Rapport Détaillé {0}",
+            "m_report": "🏷️ {0} ({1}) Profil de Rapport Détaillé",
             "m_price": "Dernier Prix",
             "m_vwap": "Coût Inst. (VWAP)",
             "m_zscore": "Momentum Stat. (Z-Score)",
             "m_kelly": "Pos. Cible Kelly",
             "m_var": "VaR Journalière 95%",
-            "m_chart_title": "Microstructure des 60 Dernières Périodes de {0}",
+            "m_chart_title": "Microstructure des 60 Dernières Périodes de {0} ({1})",
             "m_ai_decision": "#### 🤖 Décision de l'IA",
             "m_logic": "Logique",
             "m_risk_params": "#### 🛡️ Paramètres de Risque",
@@ -254,7 +259,8 @@ LANG_DICT = {
             "sb_title": "### 📊 TK Investisseur Intelligent",
             "sb_caption": "Assistant IA facile à utiliser | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres d'Investissement",
-            "sb_pool": "Actions à surveiller (séparées par virgules):",
+            "sb_pool": "Actions mondiales à surveiller:",
+            "sb_pool_help": "💡 **Conseil**: US (`AAPL`), HK (`0700.HK`), Chine (`600519.SS`), Crypto (`BTC-USD`)",
             "sb_bm": "Référence du Marché (ex: SPY):",
             "sb_actuarial": "#### 💰 Argent & Sécurité",
             "sb_capital": "Capital Total à Investir ($):",
@@ -268,13 +274,13 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement de Marché**: 🔴 Le marché {0} baisse. Mieux vaut attendre!",
             "m_calc": "Diagnostic de l'action: {0}...",
             "m_nodata": "Données introuvables pour {0}.",
-            "m_report": "🏷️ Résultat du Diagnostic IA {0}",
+            "m_report": "🏷️ {0} ({1}) Résultat du Diagnostic",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen du Marché",
             "m_zscore": "Force à Court Terme",
             "m_kelly": "Investissement Suggéré",
             "m_var": "Perte Max Estimée (Jour)",
-            "m_chart_title": "Tendance Récente de {0}",
+            "m_chart_title": "Tendance Récente de {0} ({1})",
             "m_ai_decision": "#### 🤖 Suggestion de l'IA",
             "m_logic": "Raison",
             "m_risk_params": "#### 🛡️ Conseils de Sécurité",
@@ -362,14 +368,13 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式（强力隐藏右下角 Manage app 悬浮窗及其底层 iframe）
+# 统一封装并安全注入 CSS 样式
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 header {{visibility: hidden;}}
 
-/* 强力隐藏右下角管理悬浮按钮及所有平台注入元素 */
 [data-testid="stToolbar"], 
 [data-testid="stDecoration"], 
 div[class*="viewerBadge"], 
@@ -381,7 +386,6 @@ iframe[title="streamlit"] {{
     pointer-events: none !important;
 }}
 
-/* 隐藏所有底部固定浮动容器 */
 .element-container:has(iframe) {{
     display: none;
 }}
@@ -437,7 +441,7 @@ st.markdown(unified_css, unsafe_allow_html=True)
 t = LANG_DICT[lang][mode_key]
 
 # ==========================================
-# 5. 侧边栏：交互面板
+# 5. 侧边栏：交互面板（带有全球市场代码输入提示）
 # ==========================================
 with st.sidebar:
     sidebar_avatar = "avatar.png"
@@ -452,7 +456,8 @@ with st.sidebar:
     
     st.header(t["sb_settings"])
     symbols_input = st.text_input(t["sb_pool"], value="AAPL, TSLA, NVDA")
-    watchlist = [s.strip().upper() for s in symbols_input.split(",") if s.strip()]
+    st.caption(t["sb_pool_help"])  # 渲染全球市场的后缀提示
+    
     benchmark = st.text_input(t["sb_bm"], value="SPY").upper()
     
     st.markdown(t["sb_actuarial"])
@@ -465,7 +470,7 @@ with st.sidebar:
         st.session_state['run_engine'] = True 
 
 # ==========================================
-# 6. 核心精算与策略函数 (纯 Pandas 实现，完美适配所有 Python 版本)
+# 6. 核心精算与策略函数
 # ==========================================
 def calculate_kelly(p, b):
     return (p * b - (1 - p)) / b
@@ -509,6 +514,13 @@ if st.session_state.get('run_engine', False):
         
         try:
             ticker = yf.Ticker(sym)
+            
+            # 自动获取公司全称（如 Apple Inc.），若无则使用代码
+            try:
+                comp_name = ticker.info.get("longName", sym)
+            except Exception:
+                comp_name = sym
+
             df_1m = ticker.history(period="5d", interval="1m")
             if df_1m.empty: df_1m = ticker.history(period="1mo", interval="1d") 
             df_1d = ticker.history(period="6mo", interval="1d")
@@ -517,7 +529,7 @@ if st.session_state.get('run_engine', False):
                 st.warning(t["m_nodata"].format(sym))
                 continue
                 
-            # 纯 Pandas 计算技术指标，彻底规避云端编译报错
+            # 纯 Pandas 计算技术指标
             df_1m["SMA_5"] = df_1m["Close"].rolling(5).mean()
             df_1m["SMA_20"] = df_1m["Close"].rolling(20).mean()
             df_1m["VWAP"] = (df_1m["Volume"] * (df_1m["High"] + df_1m["Low"] + df_1m["Close"]) / 3).cumsum() / df_1m["Volume"].cumsum()
@@ -552,7 +564,8 @@ if st.session_state.get('run_engine', False):
             var_95 = calculate_var(df_1d, target_pos)
 
             with st.container(border=True):
-                st.subheader(t["m_report"].format(sym))
+                # 标题同时显示“公司全称”与“代码”
+                st.subheader(t["m_report"].format(comp_name, sym))
                 
                 col1, col2, col3, col4, col5 = st.columns(5)
                 col1.metric(t["m_price"], f"${price:.2f}")
@@ -575,7 +588,7 @@ if st.session_state.get('run_engine', False):
                         mode='lines', name='VWAP', line=dict(color='magenta', width=2, dash='dash')
                     ))
                     fig.update_layout(
-                        title=t["m_chart_title"].format(sym),
+                        title=t["m_chart_title"].format(comp_name, sym),
                         template=plotly_template, 
                         margin=dict(l=0, r=0, t=40, b=0),
                         height=350,
