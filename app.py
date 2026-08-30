@@ -297,24 +297,27 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染
+# 3. 顶栏控制台渲染（默认：中文、大众版、日间模式）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
     st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
-    lang_str = st.radio("Language", ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"], horizontal=True, label_visibility="collapsed")
+    # index=0 对应 ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"] 中的第一个即 "🇨🇳 CN"
+    lang_str = st.radio("Language", ["🇨🇳 CN", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
     lang = "CN" if "CN" in lang_str else ("EN" if "EN" in lang_str else "FR")
 
 with col_ui2:
     st.markdown('<div class="control-label">⚙️ 请选择版本 / SELECT MODE</div>', unsafe_allow_html=True)
+    # index=0 对应 ["🟢 Basic (大众版)", "🔥 Pro (专业版)"] 中的第一个即大众版
     mode_str = st.radio("Mode", ["🟢 Basic (大众版)", "🔥 Pro (专业版)"], index=0, horizontal=True, label_visibility="collapsed")
     mode_key = "PRO" if "Pro" in mode_str else "BASIC"
 
 with col_ui3:
     st.markdown('<div class="control-label">🎨 请选择外观 / THEME MODE</div>', unsafe_allow_html=True)
-    theme_str = st.radio("Theme", ["☀️ 日间", "🌙 夜间", "💻 跟随系统"], index=1, horizontal=True, label_visibility="collapsed")
+    # index=0 对应 ["☀️ 日间", "🌙 夜间", "💻 跟随系统"] 中的第一个即日间模式
+    theme_str = st.radio("Theme", ["☀️ 日间", "🌙 夜间", "💻 跟随系统"], index=0, horizontal=True, label_visibility="collapsed")
 
 with col_logo:
     logo_path = "my_logo.png"
@@ -326,7 +329,7 @@ with col_logo:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ==========================================
-# 4. 高级舒适护眼配色引擎 (完美覆盖单选按钮文字颜色)
+# 4. 高级舒适护眼配色引擎
 # ==========================================
 if "日间" in theme_str:
     bg_color = "#fbfbfa"
@@ -348,7 +351,7 @@ elif "夜间" in theme_str:
     card_bg = "rgba(27, 32, 45, 0.85)"
     card_border = "rgba(255, 255, 255, 0.08)"
     lbl_color = "#58a6ff"
-    radio_text_color = "#ffffff"  # 强制夜间单选选项文字为亮白色
+    radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 else:
     bg_color = "#12141c"
@@ -362,7 +365,7 @@ else:
     radio_text_color = "#ffffff"
     plotly_template = "plotly_dark"
 
-# 统一封装并安全注入 CSS 样式（使用最高权重选择器穿透 Streamlit 默认样式）
+# 统一封装并安全注入 CSS 样式
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
