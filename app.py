@@ -34,16 +34,21 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典 (支持简中、繁中、英文、法语)
+# 2. 国际化与多语言词典（全面覆盖所有UI组件与报告内容）
 # ==========================================
 LANG_DICT = {
     "CN": {
+        "ui_lang": "🌐 请选择语言 / SELECT LANGUAGE",
+        "ui_mode": "⚙️ 请选择版本 / SELECT MODE",
+        "ui_theme": "🎨 请选择外观 / THEME MODE",
+        "modes": ["🟢 基础策略版 (Basic)", "🔥 机构专业版 (Pro)"],
+        "themes": ["☀️ 日间模式", "🌙 夜间模式", "💻 跟随系统"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "机构级量化与精算风控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略与因子参数",
             "sb_pool": "多资产自选监控池:",
-            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技), `600519.SS` (茅台)\n- **加密资产**: `BTC-USD`",
+            "sb_pool_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (华天科技)\n- **加密资产**: `BTC-USD`",
             "sb_bm": "宏观基准资产 (Benchmark):",
             "sb_bm_help": "💡 **操作提示**: 输入后**必须按回车键 (Enter)** 确认！\n- `SPY` (标普) / `000001.SS` (上证指数)",
             "sb_actuarial": "#### 💰 资本配置与风控管理",
@@ -87,7 +92,7 @@ LANG_DICT = {
             "sb_caption": "专业量化策略辅助系统 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略参数配置",
             "sb_pool": "自选股票池代码:",
-            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (华天科技), `600519.SS` (贵州茅台)",
+            "sb_pool_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (华天科技)",
             "sb_bm": "大盘对标资产 (如 SPY):",
             "sb_bm_help": "💡 **提示**: 输入后请**按回车键 (Enter)** 保存！\n- `SPY` / `000001.SS` (上证指数)",
             "sb_actuarial": "#### 💰 资金分配与风控",
@@ -124,16 +129,21 @@ LANG_DICT = {
             "a_rev": "超跌反弹策略",
             "a_rev_r": "历史波动率偏离均值过大，存在技术性修复预期。",
             "a_sell": "触发离场信号",
-            "a_sell_r": "趋势形态破位，建议执行纪律性减仓."
+            "a_sell_r": "趋势形态破位，建议执行纪律性减仓。"
         }
     },
     "ZH": {  # 繁体中文
+        "ui_lang": "🌐 請選擇語言 / SELECT LANGUAGE",
+        "ui_mode": "⚙️ 請選擇版本 / SELECT MODE",
+        "ui_theme": "🎨 請選擇外觀 / THEME MODE",
+        "modes": ["🟢 基礎策略版 (Basic)", "🔥 機構專業版 (Pro)"],
+        "themes": ["☀️ 日間模式", "🌙 夜間模式", "💻 跟隨系統"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "機構級量化與精算風控引擎 | **By Kai Teng**",
             "sb_settings": "⚙️ 策略與因子參數",
             "sb_pool": "多資產自選監控池:",
-            "sb_pool_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: 加 `.HK` (如 `0700.HK`)\n- **A股**: `.SS` / `.SZ` (如 `002185.SZ` 華天科技)\n- **加密資產**: 加 `-USD`",
+            "sb_pool_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (華天科技)\n- **加密資產**: `BTC-USD`",
             "sb_bm": "宏觀基準資產 (Benchmark):",
             "sb_bm_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認！\n- `SPY` / `000001.SS` (上證指數)",
             "sb_actuarial": "#### 💰 資本配置與風控管理",
@@ -179,7 +189,7 @@ LANG_DICT = {
             "sb_pool": "自選股票池代碼:",
             "sb_pool_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (華天科技)",
             "sb_bm": "大盤對標資產 (如 SPY):",
-            "sb_bm_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- `SPY` / `000001.SS`",
+            "sb_bm_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- `SPY` / `000001.SS` (上證指數)",
             "sb_actuarial": "#### 💰 資金分配與風控",
             "sb_capital": "初始投資資金 ($):",
             "sb_winrate": "策略預期勝率:",
@@ -218,6 +228,11 @@ LANG_DICT = {
         }
     },
     "EN": {
+        "ui_lang": "🌐 SELECT LANGUAGE",
+        "ui_mode": "⚙️ SELECT MODE",
+        "ui_theme": "🎨 THEME MODE",
+        "modes": ["🟢 Basic Strategy", "🔥 Institutional Pro"],
+        "themes": ["☀️ Day Mode", "🌙 Night Mode", "💻 System Default"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Institutional Quant & Actuarial Engine | **By Kai Teng**",
@@ -308,14 +323,19 @@ LANG_DICT = {
         }
     },
     "FR": {
+        "ui_lang": "🌐 CHOISIR LA LANGUE",
+        "ui_mode": "⚙️ CHOISIR LE MODE",
+        "ui_theme": "🎨 MODE THÈME",
+        "modes": ["🟢 Version Basique", "🔥 Version Pro Pro."],
+        "themes": ["☀️ Mode Jour", "🌙 Mode Nuit", "💻 Système"],
         "PRO": {
             "sb_title": "### 📊 TK Quant Terminal",
             "sb_caption": "Moteur Quant. et Actuariel | **Par Kai Teng**",
             "sb_settings": "⚙️ Paramètres de Stratégie",
             "sb_pool": "Actifs surveillés:",
-            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
+            "sb_pool_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !\n- US (`AAPL`), Chine (`002185.SZ`)",
             "sb_bm": "Référence Macro:",
-            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée (Enter)** après la saisie !",
+            "sb_bm_help": "💡 **Conseil**: Appuyez sur **Entrée** après la saisie !",
             "sb_actuarial": "#### 💰 Gestion du Capital",
             "sb_capital": "Capital Simulé ($):",
             "sb_winrate": "Taux de Victoire Attendu:",
@@ -399,33 +419,38 @@ LANG_DICT = {
     }
 }
 
+# 先读取当前的语言选择（默认简体中文）以加载动态的 radio 选项标签
+current_lang_temp = "CN" # 默认初始
+
 # ==========================================
-# 3. 顶栏控制台渲染（默认：简体中文、大众版、日间模式）
+# 3. 顶栏控制台渲染（支持四种语言选项动态绑定）
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
 
 with col_ui1:
-    st.markdown('<div class="control-label">🌐 请选择语言 / SELECT LANGUAGE</div>', unsafe_allow_html=True)
-    # 增加繁体中文 🇭🇰 选项
-    lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 EN", "🇫🇷 FR"], index=0, horizontal=True, label_visibility="collapsed")
+    # 语言选择
+    lang_str = st.radio("Language", ["🇨🇳 简体中文", "🇭🇰 繁體中文", "🇬🇧 English", "🇫🇷 Français"], index=0, horizontal=True, label_visibility="collapsed")
     if "简体" in lang_str:
         lang = "CN"
     elif "繁體" in lang_str:
         lang = "ZH"
-    elif "EN" in lang_str:
+    elif "English" in lang_str:
         lang = "EN"
     else:
         lang = "FR"
 
+# 根据当前选中的语言，获取对应的UI文本
+ui_t = LANG_DICT[lang]
+
 with col_ui2:
-    st.markdown('<div class="control-label">⚙️ 请选择版本 / SELECT MODE</div>', unsafe_allow_html=True)
-    mode_str = st.radio("Mode", ["🟢 Basic (大众版)", "🔥 Pro (专业版)"], index=0, horizontal=True, label_visibility="collapsed")
-    mode_key = "PRO" if "Pro" in mode_str else "BASIC"
+    st.markdown(f'<div class="control-label">{ui_t["ui_mode"]}</div>', unsafe_allow_html=True)
+    mode_str = st.radio("Mode", ui_t["modes"], index=0, horizontal=True, label_visibility="collapsed")
+    mode_key = "PRO" if ("Pro" in mode_str or "专业版" in mode_str or "專業版" in mode_str) else "BASIC"
 
 with col_ui3:
-    st.markdown('<div class="control-label">🎨 请选择外观 / THEME MODE</div>', unsafe_allow_html=True)
-    theme_str = st.radio("Theme", ["☀️ 日间", "🌙 夜间", "💻 跟随系统"], index=0, horizontal=True, label_visibility="collapsed")
+    st.markdown(f'<div class="control-label">{ui_t["ui_theme"]}</div>', unsafe_allow_html=True)
+    theme_str = st.radio("Theme", ui_t["themes"], index=0, horizontal=True, label_visibility="collapsed")
 
 with col_logo:
     logo_path = "my_logo.png"
@@ -439,7 +464,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 # ==========================================
 # 4. 高级舒适护眼配色引擎
 # ==========================================
-if "日间" in theme_str:
+if "日间" in theme_str or "Day" in theme_str or "Jour" in theme_str:
     bg_color = "#fbfbfa"
     text_color = "#2c2c2e"
     sb_bg = "#f3f3f2"
@@ -450,7 +475,7 @@ if "日间" in theme_str:
     lbl_color = "#0066cc"
     radio_text_color = "#1c1c1e"
     plotly_template = "plotly_white"
-elif "夜间" in theme_str:
+elif "夜间" in theme_str or "Night" in theme_str or "Nuit" in theme_str:
     bg_color = "#12141c"
     text_color = "#e1e4e8"
     sb_bg = "#181b26"
