@@ -17,7 +17,7 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置（默认展开，保留原生左上角切换按钮）
+# 1. 页面全局配置
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
@@ -34,7 +34,7 @@ st.warning(
 )
 
 # ==========================================
-# 2. 国际化与多语言词典（精简为：简体中文、英文、法语）
+# 2. 国际化与多语言词典（简中、繁中、英文、法语）
 # ==========================================
 LANG_DICT = {
     "CN": {
@@ -131,6 +131,102 @@ LANG_DICT = {
             "a_rev_r": "历史波动率偏离均值过大，存在技术性修复预期。",
             "a_sell": "触发离场信号",
             "a_sell_r": "趋势形态破位，建议执行纪律性减仓。"
+        }
+    },
+    "ZH": {
+        "ui_lang": "🌐 語言 / LANGUAGE",
+        "ui_mode": "⚙️ 版本 / MODE",
+        "ui_theme": "🎨 外觀 / THEME",
+        "lang_options": ["🇨🇳 简体中文", "🇬🇧 English", "🇫🇷 Français"],
+        "modes": ["🟢 基礎策略版 (Basic)", "🔥 機構專業版 (Pro)"],
+        "themes": ["☀️ 日間模式", "🌙 夜間模式", "💻 跟隨系統"],
+        "PRO": {
+            "sb_title": "### 📊 TK Quant Terminal",
+            "sb_caption": "機構級量化與精算風控引擎 | **By Kai Teng**",
+            "sb_settings": "⚙️ 策略與因子參數",
+            "sb_pool": "多資產自選監控池:",
+            "sb_pool_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認保存！\n- **美股**: `AAPL`, `TSLA`\n- **港股**: `0700.HK`\n- **A股**: `002185.SZ` (華天科技)\n- **加密資產**: `BTC-USD`",
+            "sb_bm": "宏觀基準資產 (Benchmark):",
+            "sb_bm_help": "💡 **操作提示**: 輸入後**必須按回車鍵 (Enter)** 確認！\n- `SPY` / `000001.SS` (上證指數)",
+            "sb_actuarial": "#### 💰 資本配置與風控管理",
+            "sb_capital": "策略模擬初始本金 ($):",
+            "sb_winrate": "策略歷史勝率 (Win Rate):",
+            "sb_wlratio": "盈虧賠率 (W/L Ratio):",
+            "sb_btn": "🚀 執行多因子量化掃描",
+            "m_title": "📊 宏微觀雙週期量化決策矩陣",
+            "m_subtitle": "Powered by **TK's Actuarial & Quantitative Architecture**",
+            "m_fetching": "核心引擎正在調動全球網路節點彙聚高頻行情...",
+            "m_bm_bull": "**宏觀風控閥**: 🟢 基準資產 ({0}) 運行於長期均線上方，多頭策略敞口正常釋放。",
+            "m_bm_bear": "**宏觀風控閥**: 🔴 基準資產 ({0}) 下破 20 日生命線，全策略風控熔斷啟動！",
+            "m_calc": "正在執行多維量價矩陣測算: {0}...",
+            "m_nodata": "無法獲取標的 {0} 的有效行情數據。",
+            "m_price": "最新成交價",
+            "m_vwap": "機構成本基準 (VWAP)",
+            "m_zscore": "統計動量 (Z-Score)",
+            "m_kelly": "凱利最優倉位",
+            "m_var": "95% 單日 VaR 風險值",
+            "m_chart_title": "{0} ({1}) - 近 60 週期微觀結構與機構 VWAP 錨點",
+            "m_ai_decision": "#### 🤖 策略信號裁決",
+            "m_logic": "核心邏輯",
+            "m_risk_params": "#### 🛡️ 精算風控邊界",
+            "m_stop_loss": "動態防守止損位",
+            "m_kelly_ratio": "凱利配比",
+            "m_var_exp": "VaR 尾部風險敞口",
+            "m_waiting": "👈 請在左側側邊欄配置策略參數與資產代碼（**輸入後請按回車鍵確認**），並點擊 **執行多因子量化掃描** 以加載終端。",
+            "a_hold": "NEUTRAL (中性觀望)",
+            "a_hold_r": "多空動能交織，未觸及統計顯著性閾值",
+            "a_buy": "LONG BREAKOUT (多頭突破)",
+            "a_buy_r": "宏觀環境安全，價格強勢上穿機構 VWAP 成本線",
+            "a_block": "RISK BLOCKED (風控攔截)",
+            "a_block_r": "觸發系統級宏觀風控閥阻斷",
+            "a_rev": "MEAN REVERSION (均值回歸)",
+            "a_rev_r": "價格出現統計學超跌，強烈的均值回歸需求觸發",
+            "a_sell": "TECHNICAL EXIT (破位止損)",
+            "a_sell_r": "微觀結構崩塌，動態指標觸及清倉警戒線"
+        },
+        "BASIC": {
+            "sb_title": "### 📊 TK 策略觀察終端",
+            "sb_caption": "專業量化策略輔助系統 | **By Kai Teng**",
+            "sb_settings": "⚙️ 策略參數配置",
+            "sb_pool": "自選股票池代碼:",
+            "sb_pool_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- **美股**: `AAPL`\n- **A股**: `002185.SZ` (華天科技)",
+            "sb_bm": "大盤對標資產 (如 SPY):",
+            "sb_bm_help": "💡 **提示**: 輸入後請**按回車鍵 (Enter)** 保存！\n- `SPY` / `000001.SS` (上證指數)",
+            "sb_actuarial": "#### 💰 資金分配與風控",
+            "sb_capital": "初始投資資金 ($):",
+            "sb_winrate": "策略預期勝率:",
+            "sb_wlratio": "盈虧比 (Reward/Risk):",
+            "sb_btn": "🚀 運行策略分析",
+            "m_title": "📊 資產多維量化評估報告",
+            "m_subtitle": "基於統計學與微觀結構的多因子量化看板",
+            "m_fetching": "正在建立市場數據連接...",
+            "m_bm_bull": "**市場環境**: 🟢 對標大盤 ({0}) 趨勢向上，整體環境安全。",
+            "m_bm_bear": "**市場環境**: 🔴 對標大盤 ({0}) 出現破位下行，系統建議收縮防線！",
+            "m_calc": "正在測算標的: {0}...",
+            "m_nodata": "未能檢索到 {0} 的行情，請核對代碼或後綴。",
+            "m_price": "當前成交價",
+            "m_vwap": "機構均價 (VWAP)",
+            "m_zscore": "動量指標",
+            "m_kelly": "建議配置金額",
+            "m_var": "單日最大風險敞口 (VaR)",
+            "m_chart_title": "{0} ({1}) 近期走勢與機構成本線",
+            "m_ai_decision": "#### 🤖 策略信號輸出",
+            "m_logic": "觸發原因",
+            "m_risk_params": "#### 🛡️ 風險風控基準",
+            "m_stop_loss": "建議止損位",
+            "m_kelly_ratio": "建議倉位比例",
+            "m_var_exp": "單日 VaR 風險值",
+            "m_waiting": "👈 請在左側輸入代碼（**按回車鍵確認**），點擊 **運行策略分析** 開始評估。",
+            "a_hold": "觀望中性",
+            "a_hold_r": "當前多空信號不明，建議保持流動性。",
+            "a_buy": "符合多頭策略",
+            "a_buy_r": "大盤環境穩健，價格運行於機構平均成本之上。",
+            "a_block": "觸發風控攔截",
+            "a_block_r": "大盤趨勢走弱，暫停開倉以控制整體回撤。",
+            "a_rev": "超跌反弹策略",
+            "a_rev_r": "歷史波動率偏離均值過大，存在技術性修復預期。",
+            "a_sell": "觸發離場信號",
+            "a_sell_r": "趨勢形態破位，建議執行紀律性減倉。"
         }
     },
     "EN": {
@@ -405,18 +501,14 @@ else:
     plotly_template = "plotly_dark"
 
 # 统一封装并安全注入 CSS 样式
-# ⚠️ 注意：这里彻底移除了 "header {visibility: hidden;}"，以确保左上角原生折叠箭头正常显示！
+# 【终极完美修复】去除了任何会误杀原生 header 和 button 的代码
+# 只精准打击右上角部署菜单 (stToolbar) 和右下角 Manage App (iframe)
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 
-/* 确保网页顶栏背景透明，使得原生折叠箭头完美可见 */
-header {{
-    background: transparent !important;
-}}
-
-/* 仅精准隐藏右上角的干扰项(Deploy, Menu, 装饰线)及右下角 Manage App iframe */
+/* 仅精准隐藏右上角多余工具栏、装饰线，以及右下角的 Manage App iframe，绝不触碰任何原生的 button 元素 */
 [data-testid="stToolbar"], 
 [data-testid="stDecoration"], 
 div[class*="viewerBadge"], 
