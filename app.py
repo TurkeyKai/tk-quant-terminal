@@ -17,7 +17,7 @@ if __name__ == '__main__':
         sys.exit(stcli.main())
 
 # ==========================================
-# 1. 页面全局配置（恢复为默认展开，且绝不遮挡原生收起按钮）
+# 1. 页面全局配置（默认展开，保留原生左上角切换按钮）
 # ==========================================
 st.set_page_config(
     page_title="TK Quant Terminal", 
@@ -204,6 +204,7 @@ LANG_DICT = {
             "m_bm_bear": "**Market Environment**: 🔴 Benchmark ({0}) downtrend. Caution advised.",
             "m_calc": "Analyzing asset: {0}...",
             "m_nodata": "No data found for {0}.",
+            "m_report": "🏷️ Report: {0} ({1})",
             "m_price": "Current Price",
             "m_vwap": "Institutional Cost",
             "m_zscore": "Momentum Score",
@@ -300,6 +301,7 @@ LANG_DICT = {
             "m_bm_bear": "**Environnement**: 🔴 Référence ({0}) en baisse. Prudence requise.",
             "m_calc": "Analyse de l'actif: {0}...",
             "m_nodata": "Aucune donnée pour {0}.",
+            "m_report": "🏷️ Rapport: {0} ({1})",
             "m_price": "Prix Actuel",
             "m_vwap": "Coût Moyen",
             "m_zscore": "Score Momentum",
@@ -328,7 +330,7 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 3. 顶栏控制台渲染（单行、匀称、绝不重复）
+# 3. 顶栏控制台渲染
 # ==========================================
 st.markdown('<div class="top-control-card">', unsafe_allow_html=True)
 col_ui1, col_ui2, col_ui3, col_logo = st.columns([3, 3, 3, 1])
@@ -403,26 +405,30 @@ else:
     plotly_template = "plotly_dark"
 
 # 统一封装并安全注入 CSS 样式
-# 【终极修复】：去除了误杀侧边栏原生展开箭头 (collapsedControl) 的所有可能代码！
+# ⚠️ 注意：这里彻底移除了 "header {visibility: hidden;}"，以确保左上角原生折叠箭头正常显示！
 unified_css = f"""
 <style>
 #MainMenu {{visibility: hidden;}} 
 footer {{visibility: hidden;}}
 
-/* 仅仅精确隐藏右上角多余工具栏，绝不影响左上角的原生侧边栏开关按钮！ */
-[data-testid="stToolbar"] {{
-    display: none !important;
-    visibility: hidden !important;
+/* 确保网页顶栏背景透明，使得原生折叠箭头完美可见 */
+header {{
+    background: transparent !important;
 }}
 
-/* 仅隐藏右下角 Manage App iframe */
+/* 仅精准隐藏右上角的干扰项(Deploy, Menu, 装饰线)及右下角 Manage App iframe */
+[data-testid="stToolbar"], 
+[data-testid="stDecoration"], 
+div[class*="viewerBadge"], 
 iframe[title="streamlit"] {{
     display: none !important;
+    visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }}
+
 .element-container:has(iframe) {{
-    display: none !important;
+    display: none;
 }}
 
 .block-container {{ padding-top: 2rem; padding-bottom: 2rem; }}
